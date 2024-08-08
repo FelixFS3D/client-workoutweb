@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Home from "./Pages/Home"
-import Signup from "./Pages/SignUp"
-import Login from "./Pages/Login"
+import Signup from "./Pages/Auth/SignUp"
+import Login from "./Pages/Auth/Login"
 import Workouts from "./Pages/Workouts"
 import Routines from "./Pages/Routines"
 import Trainer from "./Pages/Trainer"
