@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import service from "../../../service/service.config";
+import { useNavigate } from "react-router-dom";
+
+import service from "../../service/service.config";
 
 import { FormControl, useFormControlContext } from "@mui/base/FormControl";
 import { Input, inputClasses } from "@mui/base/Input";
@@ -10,9 +12,15 @@ import { styled } from "@mui/system";
 import clsx from "clsx";
 
 function SignUp() {
+
+  const navigate = useNavigate()
+
+  
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null)
+
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
@@ -30,7 +38,18 @@ function SignUp() {
 
     try {
       await service.post("/auth/signup", newUser);
-    } catch (error) {}
+
+      navigate("/login")
+
+    } catch (error) {
+      console.log(error)
+      if (error.response && error.response.status === 400) {
+        setErrorMessage(error.response.data.errorMessage)
+      } else {
+        navigate("/error")
+      }
+
+    }
   };
 
   return (
@@ -42,6 +61,7 @@ function SignUp() {
       <FormReEnterPassword />
       <br />
       <Button type="submit">Create account</Button>
+      {errorMessage && <p>{errorMessage}</p>}
       </form>
     </div>
   );
@@ -55,18 +75,20 @@ function FormName({handleNameChange}) {
     setValue(event.target.value);
   };
   return (
-    <FormControl
-      value={value}
-      onChange={handleChange}
-      required
-    >
-      <Label>Name</Label>
-      <StyledInput
-        onChange={handleNameChange}
-        placeholder="Write your name here"
-      />
-      <HelperText />
-    </FormControl>
+
+    <form><FormControl
+    value={value}
+    onChange={handleChange}
+    required
+  >
+    <Label>Name</Label>
+    <StyledInput
+      onChange={handleNameChange}
+      placeholder="Write your name here"
+    />
+    <HelperText />
+  </FormControl></form>
+    
   );
 }
 function FormEmail({handleEmailChange}) {
