@@ -10,49 +10,6 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-const theme = createTheme({
-  palette: {
-    limes: {
-      light: "#CFFCE2", // muy claro y suave, para fondos o elementos con bajo contraste
-      hovers: "#A0F9C5", // un tono más claro para hover effects
-      main: "#48D995", // principal. verde lima
-      forButtons: "#3BC47E", // ligeramente más oscuro que el principal, ideal para botones o elementos interactivos
-      dark: "#32AC6D", // tono oscuro que mantiene el contraste
-      contrastText: "#094036", // textos o elementos de alto contraste.
-    },
-  },
-  components: {
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          "& .MuiInputLabel-root": {
-            color: "#3BC47E", // Color del label por defecto
-          },
-          "& .MuiInputLabel-root.Mui-focused": {
-            color: "#32AC6D", // Color del label cuando está enfocado
-          },
-          "& .MuiOutlinedInput-root": {
-            "& input::placeholder": {
-              color: "#fff", // Color del placeholder
-            },
-            "& input": {
-              color: "#fff", // Color del texto ingresado
-            },
-            "& fieldset": {
-              borderColor: "#48D995", // Color del borde por defecto
-            },
-            "&:hover fieldset": {
-              borderColor: "#A0F9C5", // Color del borde al hacer hover
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "#32AC6D", // Color del borde cuando está enfocado
-            },
-          },
-        },
-      },
-    },
-  },
-});
 function Login() {
   const { authenticateUser } = useContext(AuthContext);
 
@@ -98,7 +55,6 @@ function Login() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
       <Box
         onSubmit={handleLogin}
         component="form"
@@ -131,7 +87,6 @@ function Login() {
           {errorMessage && <p>{errorMessage}</p>}
         </div>
       </Box>
-    </ThemeProvider>
   );
 }
 
