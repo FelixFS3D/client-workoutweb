@@ -1,5 +1,57 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h4 {
+  font-size: 2,5vh;
+  color: #A0F9C5;
+}
+
+.main-background {
+  background-image: url("/src/images/home/main_byw.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  width: 100vw;
+  text-align: center;
+  position: relative;
+}
+.main-background h1 {
+  font-size: 8vh;
+  color: #48D995;
+  transform: translateY(10px);
+}
+.opinions-container {
+  width: 100vw;
+  height: 20vh;
+  margin-top: 0;
+  background-color: #3BC47E;
+  margin-top: px;
+  position: absolute;
+  bottom: -20vh;
+}
+.opinions-container h3 {
+  color: white;
+}
+.discover-container {
+  width: 100vw;
+  height: 20vh;
+  margin-top: 0;
+  margin-top: px;
+  position: absolute;
+  bottom: -40vh;
+}
+.discover-container h3 {
+  font-size: 2,5vh;
+  color: #A0F9C5;
+}
+
+

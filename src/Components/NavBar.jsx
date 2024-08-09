@@ -65,7 +65,13 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static"
+    sx={{
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      color: "limes"
+    }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -84,7 +90,7 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            WORKOUTWEB
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
