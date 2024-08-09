@@ -5,6 +5,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
@@ -14,7 +15,15 @@ function CreateModalWorkout() {
   const [open, setOpen] = React.useState(false);
   // cloudinary
   const [imageUrl, setImageUrl] = useState(null);
+
   const [isUploading, setIsUploading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [workout, setWorkout] = useState("");
+  const [muscle, setMuscle] = useState("");
+  const [reps, setReps] = useState("");
+  const [videoDemo, setVideoDemo] = useState("");
+
+const navigate = useNavigate()
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,6 +32,7 @@ function CreateModalWorkout() {
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleFileUpload = async (event) => {
     // console.log("The file to be uploaded is: ", e.target.files[0]);
 
@@ -45,8 +55,43 @@ function CreateModalWorkout() {
     }
   };
 
+  const handleCreate = async (event) => {
+    event.preventDefault()
+
+    const newWorkout = {
+        workout,
+        muscle,
+        reps,
+        videoDemo,
+        imgWork: imageUrl
+    }
+    try {
+        await service.post("/workouts", newWorkout)
+        navigate("/trainer");
+    } catch (error) {
+        console.log(error);
+        if (error.response && error.response.status === 400) {
+          setErrorMessage(error.response.data.errorMessage);
+        } else {
+          navigate("/error");
+        }
+      }
+
+    };
+
+    const handleWorkoutCreate = (event) => setWorkout(event.target.value);
+    const handleMuscleCreate = (event) => setMuscle(event.target.value);
+    const handleRepsCreate = (event) => setReps(event.target.value);
+    const handleVideoDemoCreate = (event) => setVideoDemo(event.target.value);
+
+    const handleClickAndSave = async (event) => {
+         event.preventDefault();
+         await handleCreate(event); // la función necesita saber qué datos se ingresan en el formulario 
+        handleClose()
+    }
+
   return (
-    <React.Fragment>
+    <React.Fragment >
       <Button variant="outlined" onClick={handleClickOpen}>
         Create WorkOut
       </Button>
@@ -69,7 +114,8 @@ function CreateModalWorkout() {
         <DialogContent>
           <Box
             sx={{
-              "& .MuiTextField-root": { m: 1, width: "25ch" },
+              "& .MuiTextField-root": { m: 1, width: "25ch" }
+              ,
             }}
             noValidate
             autoComplete="off"
@@ -79,37 +125,39 @@ function CreateModalWorkout() {
                 id="outlined-workout-input"
                 label="Workout"
                 color="limes"
+                onChange={handleWorkoutCreate}
               />
               <TextField
                 id="outlined-muscle-input"
                 label="Muscle"
                 color="limes"
+                onChange={handleMuscleCreate}
               />
-              <TextField id="outlined-reps-input" label="Reps" color="limes" />
+               <TextField
+                id="outlined-muscle-input"
+                label="Muscle"
+                color="limes"
+                onChange={handleMuscleCreate}
+              />
+              <TextField 
+              id="outlined-reps-input" 
+              label="Reps" 
+              color="limes"
+              onChange={handleRepsCreate}
+              />
               <TextField
                 id="outlined-videoDemo-input"
                 label="URL Video"
                 color="limes"
+                onChange={handleVideoDemoCreate}
               />
               <TextField
                 id="outlined-imgWork-input"
-                label="Select Image"
+                type="file"
+                name="imgWork"
+                onChange={handleFileUpload}
+                disabled={isUploading}
                 color="limes"
-                onClick={() =>
-                  document.getElementById("file-upload-input").click()
-                } // Activar input oculto
-                InputProps={{
-                  endAdornment: (
-                    <input
-                      type="file"
-                      id="file-upload-input"
-                      name="image"
-                      onChange={handleFileUpload}
-                      style={{ display: "none" }} // Ocultar el input
-                      disabled={isUploading}
-                    />
-                  ),
-                }}
               />
               {/* Mostrar mensaje de carga */}
               {isUploading ? <h3>... uploading image</h3> : null}
@@ -120,12 +168,13 @@ function CreateModalWorkout() {
                   <img src={imageUrl} alt="img" width={200} />
                 </div>
               ) : null}
+              {errorMessage && <p>{errorMessage}</p>}
             </div>
           </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Save</Button>
+          <Button onClick={handleClickAndSave}>Save</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

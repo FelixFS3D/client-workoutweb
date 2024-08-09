@@ -28,6 +28,7 @@ const theme = createTheme({
             color: '#32AC6D',  // Color del label cuando está enfocado
           },
           '& .MuiOutlinedInput-root': {
+            backgroundColor: '#333',
             '& input::placeholder': {
               color: '#fff',  // Color del placeholder
             },

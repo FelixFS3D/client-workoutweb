@@ -5,7 +5,7 @@ function Workouts() {
   return (
     <div>
       <NavBar />
-      <h1>Workouts</h1>
+      <h3>Workouts</h3>
     </div>
   )
 }
