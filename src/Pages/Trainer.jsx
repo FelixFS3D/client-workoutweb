@@ -1,11 +1,13 @@
 import React from 'react'
 import NavBar from '../Components/NavBar'
+import CreateModalWorkout from '../Components/CreateModalWorkout'
 
 function Trainer() {
   return (
     <div>
       <NavBar />
-      <h1>Trainer Area</h1>
+      <h3>Trainer Area</h3>
+      <CreateModalWorkout />
     </div>
   )
 }
