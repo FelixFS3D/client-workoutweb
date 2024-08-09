@@ -1,16 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import service from "../service/service.config";
 
-
 const AuthContext = createContext()
-
 
 function AuthWrapper(props) {
 
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
   const [ loggedUserId, setLoggedUserId ] = useState(null)
   const [ isAuthenticating, setIsAuthenticating ] = useState(true)
-
 
   const [ isAdmin, setIsAdmin ] = useState(false)
 
@@ -19,7 +16,6 @@ function AuthWrapper(props) {
     console.log("validando el token")
 
     const authToken = localStorage.getItem("authToken")
-
    
     if (!authToken) {
       setIsLoggedIn(false)
@@ -32,9 +28,6 @@ function AuthWrapper(props) {
 
     try {
       
-
-
-
       const response = await service.get("/auth/verify")
 
       console.log(response)
