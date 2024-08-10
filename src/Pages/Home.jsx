@@ -1,10 +1,15 @@
 import React from "react";
 import NavBar from "../Components/NavBar";
+import myImage from "../images/main_byw.jpg";
+import myImage2 from "../images/gym2-byw.jpg";
 
 function Home() {
   return (
     <>
-    <div className="main-background">
+    <div className="main-background" style={{
+    backgroundImage: `url(${myImage})`,
+    }}
+    >
       <NavBar />
       <h1>
         BUILD ROUTINES<span id="h1-white">AND STAY FIT</span>
@@ -54,7 +59,9 @@ function Home() {
         </div>
       </div>
 
-      <div className="our-workout-routines-container">
+      <div className="our-workout-routines-container" style={{
+    backgroundImage: `url(${myImage2})`,
+    }}>
         <h1>
           OUR WORKOUT<span>ROUTINES</span>
         </h1>

@@ -17,7 +17,6 @@
 
 
 .main-background {
-  background-image: url("/src/images/home/main_byw.jpg");
   background-size: cover;
   background-position: center;
   height: 90vh;
@@ -25,13 +24,14 @@
   position: relative;
 }
 .main-background h1 {
-  font-size: 100px;
-  width: 35vw;
+  font-size: 120px;
+  width: 45vw;
   margin: 0;
   color: #c1ff72;
   display: flex;
   flex-wrap: wrap;
-  transform: translateY(200px);
+  transform: translate(80px, 300px);
+  line-height: 1;
 }
 #h1-white{
   color: white;
@@ -47,6 +47,7 @@
   border-radius: 45px;
   height: 80px;
   width: 200px;
+  transform: translate(900px, 120px);
 }
 .signup:hover {
   background-color: #c1ff70;
@@ -65,7 +66,8 @@
   bottom: -60vh;
 }
 .opinions-container h3 {
-  color: white;
+  color: #343434
+
 }
 
 
@@ -83,7 +85,6 @@
 }
 
 .our-workout-routines-container {
-  background-image: url("/src/images/home/gym2-byw.jpg");
   background-size: cover;
   background-position: center;
   height: 90vh;
