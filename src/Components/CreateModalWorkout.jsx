@@ -5,14 +5,14 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
 
 function CreateModalWorkout() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   // cloudinary
   const [imageUrl, setImageUrl] = useState(null);
 
@@ -133,12 +133,7 @@ const navigate = useNavigate()
                 color="limes"
                 onChange={handleMuscleCreate}
               />
-               <TextField
-                id="outlined-muscle-input"
-                label="Muscle"
-                color="limes"
-                onChange={handleMuscleCreate}
-              />
+           
               <TextField 
               id="outlined-reps-input" 
               label="Reps" 
