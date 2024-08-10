@@ -1,5 +1,10 @@
+@font-face {
+  font-family: 'Pragmatica';
+  src: url('fonts/fonnts.com-Pragmatica_Ext_Book.otf') format('truetype');
+}
 #root {
-  font-family: "Arimo", sans-serif;
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
   font-optical-sizing: auto;
   font-style: normal;
   margin: 0;
@@ -10,37 +15,60 @@
   box-sizing: border-box;
 }
 
-h4 {
-  font-size: 2,5vh;
-  color: #A0F9C5;
-}
 
 .main-background {
   background-image: url("/src/images/home/main_byw.jpg");
   background-size: cover;
   background-position: center;
-  height: 50vh;
+  height: 90vh;
   width: 100vw;
-  text-align: center;
   position: relative;
 }
 .main-background h1 {
-  font-size: 8vh;
-  color: #48D995;
-  transform: translateY(10px);
+  font-size: 100px;
+  width: 35vw;
+  margin: 0;
+  color: #c1ff72;
+  display: flex;
+  flex-wrap: wrap;
+  transform: translateY(200px);
 }
+#h1-white{
+  color: white;
+}
+
+.signup {
+  padding: 10px 20px;
+  background-color: #c1ff72;
+  color: #343434;
+  font-family: "Pragmatica";
+  font-size: 20px;
+  border: none;
+  border-radius: 45px;
+  height: 80px;
+  width: 200px;
+}
+.signup:hover {
+  background-color: #c1ff70;
+}
+.signup:active {
+  background-color: #c1ff75;
+}
+
 .opinions-container {
   width: 100vw;
-  height: 20vh;
+  height: 60vh;
   margin-top: 0;
-  background-color: #3BC47E;
+  background-color: #f1f1f1;
   margin-top: px;
   position: absolute;
-  bottom: -20vh;
+  bottom: -60vh;
 }
 .opinions-container h3 {
   color: white;
 }
+
+
 .discover-container {
   width: 100vw;
   height: 20vh;
@@ -54,4 +82,17 @@ h4 {
   color: #A0F9C5;
 }
 
+.our-workout-routines-container {
+  background-image: url("/src/images/home/gym2-byw.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  width: 100vw;
+  transform: translateY(200px);
+}
+
+.footer-site {
+background-color: black;
+
+}
 
