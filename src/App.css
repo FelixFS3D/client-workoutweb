@@ -4,7 +4,6 @@
 }
 #root {
   font-family: "Anton", sans-serif;
-  font-weight: 400;
   font-optical-sizing: auto;
   font-style: normal;
   margin: 0;
@@ -32,12 +31,13 @@
   flex-wrap: wrap;
   transform: translate(80px, 300px);
   line-height: 1;
+  position: absolute
 }
 #h1-white{
   color: white;
 }
 
-.signup {
+.main-background .signup {
   padding: 10px 20px;
   background-color: #c1ff72;
   color: #343434;
@@ -47,51 +47,137 @@
   border-radius: 45px;
   height: 80px;
   width: 200px;
-  transform: translate(900px, 120px);
+  transform: translate(900px, 420px);
 }
 .signup:hover {
-  background-color: #c1ff70;
+  background-color: #95cb4e;
 }
 .signup:active {
   background-color: #c1ff75;
 }
 
-.opinions-container {
+.opinions-container, .signup-call{
   width: 100vw;
   height: 60vh;
   margin-top: 0;
   background-color: #f1f1f1;
-  margin-top: px;
-  position: absolute;
-  bottom: -60vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 .opinions-container h3 {
-  color: #343434
-
-}
-
-
-.discover-container {
-  width: 100vw;
-  height: 20vh;
-  margin-top: 0;
-  margin-top: px;
+  color: #343434;
+  font-size: 2.4em;
   position: absolute;
-  bottom: -40vh;
+  margin-top: 40px;
+
 }
-.discover-container h3 {
-  font-size: 2,5vh;
-  color: #A0F9C5;
+#op1, #op2, #op3, #op4{
+  width: 220px;
+  height: 350px;
+  border:0px solid black;
+  border-radius: 30px;
+  background-color: #d1ff9e;
+  font-family: "Pragmatica";
+  font-size: small;
+  color: #343434;
+  margin: 40px 10px 0 10px;
+  transform: translateY(100px);
+ 
+}
+
+#avatar1, #avatar2, #avatar3, #avatar4{
+width: 80px;
+height: 80px;
+position: absolute;
+border-radius: 40px;
 }
 
 .our-workout-routines-container {
   background-size: cover;
   background-position: center;
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
-  transform: translateY(200px);
+  position: relative;
+}
+.our-workout-routines-container h1 {
+  font-size: 120px;
+  width: 28vw;
+  position: absolute;
+  margin: 0;
+  color: #c1ff72;
+  transform: translate(80px, 40px);
+  line-height: 1;
+}
+.our-workout-routines-container .signup {
+  padding: 10px 20px;
+  background-color: #c1ff72;
+  color: #343434;
+  font-family: "Pragmatica";
+  font-size: 20px;
+  border: none;
+  border-radius: 45px;
+  height: 80px;
+  width: 200px;
+  transform: translate(160px, 480px);
+}
+.signup:hover {
+  background-color: #95cb4e;
+}
+.signup:active {
+  background-color: #c1ff75;
 }
 
+.texts {
+  position: absolute;
+  right: 50px;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.text-block h3 {
+  font-size: 35px;
+  width: 200px;
+  gap: 1px;
+  color: #c1ff72;
+  margin: 0 0 10px 0;
+}
+
+.text-block p {
+  font-family: "Pragmatica";
+  font-size: 14px;
+  width: 400px;
+}
+
+
+.signup-call h2 {
+  color: #343434;
+  font-size: 2.4em;
+  position: absolute;
+  margin-top: 40px;
+}
+
+.signup-call #yoga {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signup-call #yoga img{
+width: 150px;
+height: 150px;
+position: relative;
+border-radius: 20px;
+}
+.signup-call #yoga p {
+  color:#343434;
+  font-size: 50px;
+  width: 20px;
+  position: relative;
+}
 .footer-site {
 background-color: black;
 
