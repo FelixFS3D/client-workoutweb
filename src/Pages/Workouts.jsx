@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar";
 import service from "../service/service.config";
 import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
 import EditModalWorkout from "../Components/EditModalWorkout";
 function Workouts() {
   const [workouts, setWorkouts] = useState([]);
@@ -37,6 +36,8 @@ function Workouts() {
   return (
     <div>
       <NavBar />
+      <h1>WORKOUTS</h1>
+      <br />
       {workouts.map((eachWorkout, index) => {
         console.log(eachWorkout);
         return (

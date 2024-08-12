@@ -6,76 +6,65 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useNavigate } from "react-router-dom";
+
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
 
-function EditModalWorkout(props) {
+function CreateModalRoutine() {
 
   const [open, setOpen] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState(null);
-  const [workout, setWorkout] = useState(props.eachWorkout.workout);
-  const [muscle, setMuscle] = useState(props.eachWorkout.muscle);
-  const [reps, setReps] = useState(props.eachWorkout.reps);
-  const [videoDemo, setVideoDemo] = useState(props.eachWorkout.videoDemo);
+
+  const [ level, setLevel ] = useState("")
+  const [ series, setSeries ] = useState("")
+  const [ rest, setRest ] = useState("")
+  const [ workouts, setWorkouts ] = useState([])
 
   const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleEditWorkout = async (event) => {
-    event.preventDefault();
-    const updateWorkout = {
-      workout,
-      muscle,
-      reps,
-      videoDemo,
-    };
-    try {
-      await service.put(`/workouts/${props.eachWorkout._id}`, updateWorkout);
-      navigate("/trainer");
-    } catch (error) {
-      console.log(error);
-      if (error.response && error.response.status === 400) {
-        setErrorMessage(error.response.data.errorMessage);
-      } else {
-        navigate("/error");
-        // console.log(error)
-      }
-    }
-  };
+  const handleCreate = async (event) => {
+    event.preventDefault()
 
-  const handleDeleteWorkout = async () => {
+    const newRoutine = {
+        level,
+        series,
+        rest,
+        workouts
+    }
+
     try {
-      await service.delete(`/workouts/${props.eachWorkout._id}`)
-      handleClose();
-      props.getWorkouts()
+        await service.post("/routines", newRoutine)
+        navigate("/trainer")
     } catch (error) {
-      navigate("/error")
+        console.log(error)
+        navigate("/error")
     }
   }
 
-  const handleWorkoutEdit = (event) => setWorkout(event.target.value);
-  const handleMuscleEdit = (event) => setMuscle(event.target.value);
-  const handleRepsEdit = (event) => setReps(event.target.value);
-  const handleVideoDemoEdit = (event) => setVideoDemo(event.target.value);
-  
+  const handleLevelCreate = (event) => setLevel(event.target.value)
+  const handleSeriesCreate = (event) => setSeries(event.target.value)
+  const handleRestCreate = (event) => setRest(event.target.value)
+  const handleWorkOutsCreate = (event) => setWorkouts(event.target.value)
+
   const handleClickAndSave = async (event) => {
     event.preventDefault();
-    await handleEditWorkout(event); // la función necesita saber qué datos se ingresan en el formulario
-    handleClose();
-  };
+    await handleCreate(event);
+   handleClose()
+}
 
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Edit WorkOut
+        Create Routines
       </Button>
       <Dialog
         open={open}
@@ -92,7 +81,7 @@ function EditModalWorkout(props) {
           },
         }}
       >
-        <DialogTitle>Edit Workout</DialogTitle>
+        <DialogTitle>Creating Routine</DialogTitle>
         <DialogContent>
           <Box
             sx={{
@@ -103,43 +92,41 @@ function EditModalWorkout(props) {
           >
             <div>
               <TextField
-                id="outlined-workout-input"
-                label="Workout"
+                id="outlined-level-input"
+                label="Level"
                 color="limes"
-                value={workout}
-                onChange={handleWorkoutEdit}
+                onChange={handleLevelCreate}
               />
               <TextField
-                id="outlined-muscle-input"
-                label="Muscle"
+                id="outlined-series-input"
+                label="Series"
                 color="limes"
-                value={muscle}
-                onChange={handleMuscleEdit}
+                onChange={handleSeriesCreate}
+              />
+
+              <TextField
+                id="outlined-rest-input"
+                label="Rest"
+                color="limes"
+                  onChange={handleRestCreate}
               />
               <TextField
-                id="outlined-reps-input"
-                label="Reps"
+                id="outlined-workouts-input"
+                label="Workouts"
                 color="limes"
-                value={reps}
-                onChange={handleRepsEdit}
+                onChange={handleWorkOutsCreate}
               />
-              <TextField
-                id="outlined-videoDemo-input"
-                label="URL Video"
-                color="limes"
-                value={videoDemo}
-                onChange={handleVideoDemoEdit}
-              />
+              {errorMessage && <p>{errorMessage}</p>}
             </div>
           </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleClickAndSave}>Save</Button>
-          <Button onClick={handleDeleteWorkout}>Delete</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
   );
 }
-export default EditModalWorkout;
+
+export default CreateModalRoutine;
