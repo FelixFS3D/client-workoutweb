@@ -76,7 +76,7 @@ function Home() {
         </h1>
         <button className="signup">Sign up</button>
         <div className="texts">
-          <div class="text-block">
+          <div className="text-block">
             <h3>CREATE AN ACCOUNT</h3>
             <p>
               Join our app for personalized workout routines that match your
@@ -84,7 +84,7 @@ function Home() {
               supportive community. Sign up now to start your fitness journey!
             </p>
           </div>
-          <div class="text-block">
+          <div className="text-block">
             <h3>CHOOSE YOUR OWN ROUTINES</h3>
             <p>
               Find a variety of daily workout routines tailored to different
@@ -93,7 +93,7 @@ function Home() {
               your fitness level and preferences.
             </p>
           </div>
-          <div class="text-block">
+          <div className="text-block">
             <h3>STAY FIT & HEALTHY</h3>
             <p>
               Regular exercise boosts your energy, mood, and immune system.

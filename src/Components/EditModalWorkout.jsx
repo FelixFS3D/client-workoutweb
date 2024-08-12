@@ -6,46 +6,41 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useNavigate, useParams } from "react-router-dom";
-
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
 
-function EditModalWorkout({id}) {
-  const [open, setOpen] = useState(false);
-  // cloudinary
-  const [imageUrl, setImageUrl] = useState(null);
+function EditModalWorkout(props) {
 
-  const [isUploading, setIsUploading] = useState(false);
+  const [open, setOpen] = useState(false);
+
   const [errorMessage, setErrorMessage] = useState(null);
-  const [workout, setWorkout] = useState("");
-  const [muscle, setMuscle] = useState("");
-  const [reps, setReps] = useState("");
-  const [videoDemo, setVideoDemo] = useState("");
+  const [workout, setWorkout] = useState(props.eachWorkout.workout);
+  const [muscle, setMuscle] = useState(props.eachWorkout.muscle);
+  const [reps, setReps] = useState(props.eachWorkout.reps);
+  const [videoDemo, setVideoDemo] = useState(props.eachWorkout.videoDemo);
+
   const params = useParams();
+
   const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleEditWorkout = async (event) => {
     event.preventDefault();
-
     const updateWorkout = {
       workout,
       muscle,
       reps,
       videoDemo,
-      imgWork: imageUrl,
     };
     try {
-      await service.put("/workouts", updateWorkout);
-
+      await service.put(`/workouts/${props.eachWorkout._id}`, updateWorkout);
       navigate("/trainer");
     } catch (error) {
       console.log(error);
@@ -53,37 +48,26 @@ function EditModalWorkout({id}) {
         setErrorMessage(error.response.data.errorMessage);
       } else {
         navigate("/error");
+        // console.log(error)
       }
     }
   };
-  useEffect(() => {
-    console.log(id);
-    getData();
-  }, []);
 
-  const getData = async () => {
+  const handleDeleteWorkout = async () => {
     try {
-      const response = await service.get(`/workout/${params.id}`);
-
-      setWorkout(response.data.workout);
-      setMuscle(response.data.muscle);
-      setReps(response.data.reps);
-      setVideoDemo(response.data.videoDemo);
+      await service.delete(`/workouts/${props.eachWorkout._id}`)
+      handleClose();
+      props.getWorkouts()
     } catch (error) {
-      console.log(error);
-      if (error.response && error.response.status === 400) {
-        setErrorMessage(error.response.data.errorMessage);
-      } else {
-        // navigate("/error");
-        console.log(error);
-      }
+      navigate("/error")
     }
-  };
+  }
+
   const handleWorkoutEdit = (event) => setWorkout(event.target.value);
   const handleMuscleEdit = (event) => setMuscle(event.target.value);
   const handleRepsEdit = (event) => setReps(event.target.value);
   const handleVideoDemoEdit = (event) => setVideoDemo(event.target.value);
-
+  
   const handleClickAndSave = async (event) => {
     event.preventDefault();
     await handleEditWorkout(event); // la función necesita saber qué datos se ingresan en el formulario
@@ -124,25 +108,28 @@ function EditModalWorkout({id}) {
                 id="outlined-workout-input"
                 label="Workout"
                 color="limes"
+                value={workout}
                 onChange={handleWorkoutEdit}
               />
               <TextField
                 id="outlined-muscle-input"
                 label="Muscle"
                 color="limes"
+                value={muscle}
                 onChange={handleMuscleEdit}
               />
-
               <TextField
                 id="outlined-reps-input"
                 label="Reps"
                 color="limes"
+                value={reps}
                 onChange={handleRepsEdit}
               />
               <TextField
                 id="outlined-videoDemo-input"
                 label="URL Video"
                 color="limes"
+                value={videoDemo}
                 onChange={handleVideoDemoEdit}
               />
             </div>
@@ -151,10 +138,10 @@ function EditModalWorkout({id}) {
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleClickAndSave}>Save</Button>
+          <Button onClick={handleDeleteWorkout}>Delete</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
   );
 }
-
 export default EditModalWorkout;
