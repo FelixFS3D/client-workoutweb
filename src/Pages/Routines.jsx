@@ -47,7 +47,7 @@ function Routines() {
             <h4>Level: {eachRoutine.level}</h4>
             <h4>Series: {eachRoutine.series}</h4>
             <h4>Rest: {eachRoutine.rest}</h4>
-            <h4>Workouts: {eachRoutine.workouts}</h4>
+            <h4>Workouts: {eachRoutine.workouts[0]}, {eachRoutine.workouts[1]}</h4>
             <br />
             <EditModalRoutine eachRoutine={eachRoutine} getRoutines={getRoutines} />
           </div>

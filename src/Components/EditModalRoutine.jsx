@@ -37,7 +37,8 @@ function EditModalRoutine(props) {
         };
         try {
           await service.put(`/routines/${props.eachRoutine._id}`, updateRoutine);
-          navigate("/trainer");
+          navigate("/routines");
+          props.getRoutines()
         } catch (error) {
           console.log(error);
           if (error.response && error.response.status === 400) {
@@ -53,6 +54,7 @@ function EditModalRoutine(props) {
         try {
           await service.delete(`/routines/${props.eachRoutine._id}`)
           handleClose();
+          props.getRoutines()
           props.getRoutines()
         } catch (error) {
           navigate("/error")

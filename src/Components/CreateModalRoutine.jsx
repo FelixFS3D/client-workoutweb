@@ -19,7 +19,9 @@ function CreateModalRoutine() {
   const [ level, setLevel ] = useState("")
   const [ series, setSeries ] = useState("")
   const [ rest, setRest ] = useState("")
-  const [ workouts, setWorkouts ] = useState([])
+  const [ workouts, setWorkouts ] = useState("")
+  const [ workouts2, setWorkouts2 ] = useState("")
+
 
   const navigate = useNavigate();
 
@@ -38,12 +40,12 @@ function CreateModalRoutine() {
         level,
         series,
         rest,
-        workouts
+        workouts: [workouts, workouts2]
     }
 
     try {
         await service.post("/routines", newRoutine)
-        navigate("/trainer")
+        navigate("/routines")
     } catch (error) {
         console.log(error)
         navigate("/error")
@@ -54,6 +56,8 @@ function CreateModalRoutine() {
   const handleSeriesCreate = (event) => setSeries(event.target.value)
   const handleRestCreate = (event) => setRest(event.target.value)
   const handleWorkOutsCreate = (event) => setWorkouts(event.target.value)
+  const handleWorkOutsCreate2 = (event) => setWorkouts2(event.target.value)
+
 
   const handleClickAndSave = async (event) => {
     event.preventDefault();
@@ -115,6 +119,12 @@ function CreateModalRoutine() {
                 label="Workouts"
                 color="limes"
                 onChange={handleWorkOutsCreate}
+              />
+              <TextField
+                id="outlined-workouts2-input"
+                label="Workouts2"
+                color="limes"
+                onChange={handleWorkOutsCreate2}
               />
               {errorMessage && <p>{errorMessage}</p>}
             </div>
