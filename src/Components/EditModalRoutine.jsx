@@ -75,7 +75,7 @@ function EditModalRoutine(props) {
   return (
     <div>
       <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" onClick={handleClickOpen} >
         Edit Routine
       </Button>
       <Dialog

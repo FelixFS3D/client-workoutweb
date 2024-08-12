@@ -3,10 +3,12 @@ import NavBar from "../Components/NavBar";
 import service from "../service/service.config";
 import { useNavigate } from "react-router-dom";
 import EditModalRoutine from "../Components/EditModalRoutine"
+import AddRoutine from "../Components/AddRoutine"
 
 function Routines() {
   const [routines, setRoutines] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +37,8 @@ function Routines() {
     }
   };
 
+
+
   return (
     <div>
       <NavBar />
@@ -47,9 +51,15 @@ function Routines() {
             <h4>Level: {eachRoutine.level}</h4>
             <h4>Series: {eachRoutine.series}</h4>
             <h4>Rest: {eachRoutine.rest}</h4>
-            <h4>Workouts: {eachRoutine.workouts[0]}, {eachRoutine.workouts[1]}</h4>
+            <h4>Workouts:</h4>
+            {eachRoutine.workouts.map((eachWorkout, index) => {
+              return(
+                <li>{eachWorkout.workout} - {eachWorkout.reps} reps</li>
+              )
+            })}
             <br />
             <EditModalRoutine eachRoutine={eachRoutine} getRoutines={getRoutines} />
+            <AddRoutine />
           </div>
         );
       })}
