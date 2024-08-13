@@ -7,7 +7,6 @@ import service from "../service/service.config";
 
 function AddRoutine(props) {
 
-  const [routines, setRoutines] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 const navigate = useNavigate();
 
@@ -15,12 +14,11 @@ const navigate = useNavigate();
     event.preventDefault();
 
     const addRoutine = {
-      routines: routines._id,
+      routineId: props.routineId // está recibiendo routineId = {eachRoutine._id}
     };
 
     try {
-      await service.patch(`/users/routine`, addRoutine);
-      setRoutines()
+      await service.patch(`/users/routine-add`, addRoutine);
       navigate("/routines");
     } catch (error) {
       console.log(error);

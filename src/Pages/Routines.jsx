@@ -38,8 +38,6 @@ function Routines() {
     }
   };
 
-
-
   return (
     <div>
       <NavBar />
@@ -55,12 +53,12 @@ function Routines() {
             <h4>Workouts:</h4>
             {eachRoutine.workouts.map((eachWorkout, index) => {
               return(
-                <li>{eachWorkout.workout} - {eachWorkout.reps} reps</li>
+                <li key={index}>{eachWorkout.workout} - {eachWorkout.reps} reps</li>
               )
             })}
             <br />
             <EditModalRoutine eachRoutine={eachRoutine} getRoutines={getRoutines} />
-            <AddRoutine />
+            <AddRoutine routineId = {eachRoutine._id}/>
           </div>
         );
       })}
