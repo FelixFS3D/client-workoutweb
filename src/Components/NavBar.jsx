@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,11 +15,15 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 const pages = ["Home", "Trainer", "Workouts", "Routines", "User"];
 const settings = ["Profile", "Edit Profile", "Sign up", "Login", "Logout"];
 
 function NavBar() {
+
+  const { isLoggedIn, authenticateUser } = useContext(AuthContext)
+
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -65,10 +69,15 @@ function NavBar() {
       navigate("/login");
     } else if (setting === "Logout") {
       // invocar función que hace logout
-      navigate("/");
+      handleLogout();
     }
   };
-
+  
+  const handleLogout = () => {
+    localStorage.removeItem("authToken")
+    authenticateUser()
+    navigate("/")
+  }
   return (
     <AppBar
       position="static"
