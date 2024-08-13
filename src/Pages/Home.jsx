@@ -7,8 +7,14 @@ import avatar2 from "../images/avatar2.webp";
 import avatar3 from "../images/avatar3.jpg";
 import avatar4 from "../images/avatar4.webp";
 import image1 from "../images/women.jpeg"
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+
+  const navigate = useNavigate();
+  const handleNavigate = async () => {
+    navigate("/signup");
+  };
   return (
     <>
       <div className="main-background"
@@ -20,7 +26,7 @@ function Home() {
         <h1>
           BUILD ROUTINES<span id="h1-white">AND STAY FIT</span>
         </h1>
-        <button className="signup">Sign up</button>
+        <button className="signup" onClick={handleNavigate}>Sign up</button>
       </div>
 
       <div className="opinions-container">
@@ -74,7 +80,7 @@ function Home() {
         <h1>
           OUR WORKOUT <span id="h1-white">ROUTINES</span>
         </h1>
-        <button className="signup">Sign up</button>
+        <button className="signup" onClick={handleNavigate}>Sign up</button>
         <div className="texts">
           <div className="text-block">
             <h3>CREATE AN ACCOUNT</h3>
@@ -120,7 +126,7 @@ function Home() {
           <p>STRENGTH</p>
         </div>
         </div>
-        <button className="signup">Sign up</button>
+        <button className="signup" onClick={handleNavigate}>Sign up</button>
       </div>
 
       <div className="footer-site">

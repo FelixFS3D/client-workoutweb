@@ -21,36 +21,38 @@ const Chrono = () => {
     return () => clearInterval(intervalId);
   }, [activo]);
 
-  const iniciarCronometro = () => {
+  const startChrono = () => {
     setActivo(true);
   };
-  const pararCronometro = () => {
+  const stopChrono = () => {
     setActivo(false);
   };
-  const resetearCronometro = () => {
+  const resetChrono = () => {
     setActivo(false);
     setTiempo(0);
   };
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div className="chrono">
       <h1>Chrono</h1> <h2>{tiempo} secs</h2>
+      <div className="buttons-chrono">
       <Button
-        onClick={iniciarCronometro}
+        onClick={startChrono}
         variant="outlined"
         style={{ marginRight: "10px" }}
       >
         Go!
       </Button>
       <Button
-        onClick={pararCronometro}
+        onClick={stopChrono}
         variant="outlined"
         style={{ marginRight: "10px" }}
       >
         Stop!
       </Button>
-      <Button onClick={resetearCronometro} variant="outlined">
+      <Button onClick={resetChrono} variant="outlined">
         Reset
       </Button>
+      </div>
     </div>
   );
 };
