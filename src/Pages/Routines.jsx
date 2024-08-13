@@ -7,6 +7,7 @@ import AddRoutine from "../Components/AddRoutine"
 
 function Routines() {
   const [routines, setRoutines] = useState([]);
+  
   const [errorMessage, setErrorMessage] = useState(null);
 
   const navigate = useNavigate();

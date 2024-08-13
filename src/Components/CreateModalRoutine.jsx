@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
+import SelectWorkouts from "./SelectWorkouts";
 
 function CreateModalRoutine() {
 
@@ -20,7 +21,7 @@ function CreateModalRoutine() {
   const [ series, setSeries ] = useState("")
   const [ rest, setRest ] = useState("")
   const [ workouts, setWorkouts ] = useState("")
-  const [ workouts2, setWorkouts2 ] = useState("")
+ 
 
 
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ function CreateModalRoutine() {
         level,
         series,
         rest,
-        workouts: [workouts, workouts2]
+        workouts
     }
 
     try {
@@ -56,7 +57,7 @@ function CreateModalRoutine() {
   const handleSeriesCreate = (event) => setSeries(event.target.value)
   const handleRestCreate = (event) => setRest(event.target.value)
   const handleWorkOutsCreate = (event) => setWorkouts(event.target.value)
-  const handleWorkOutsCreate2 = (event) => setWorkouts2(event.target.value)
+  
 
 
   const handleClickAndSave = async (event) => {
@@ -114,18 +115,14 @@ function CreateModalRoutine() {
                 color="limes"
                   onChange={handleRestCreate}
               />
-              <TextField
-                id="outlined-workouts-input"
-                label="Workouts"
-                color="limes"
-                onChange={handleWorkOutsCreate}
-              />
-              <TextField
-                id="outlined-workouts2-input"
-                label="Workouts2"
-                color="limes"
-                onChange={handleWorkOutsCreate2}
-              />
+
+
+
+             <SelectWorkouts />
+
+
+
+
               {errorMessage && <p>{errorMessage}</p>}
             </div>
           </Box>
