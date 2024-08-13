@@ -44,8 +44,8 @@ function Workouts() {
           <div key={index}>
             <h4>Workout: {eachWorkout.workout}</h4>
             <h4>Muscle: </h4>
-            {eachWorkout.muscle.map((eachMuscle) => {
-              return <li>{eachMuscle}</li>;
+            {eachWorkout.muscle.map((eachMuscle, index) => {
+              return <li key={index}>{eachMuscle}</li>;
             })}
             <h4>Reps: {eachWorkout.reps}</h4>
             <img

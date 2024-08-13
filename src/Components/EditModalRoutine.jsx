@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
-import SelectWorkouts from "./SelectWorkouts";
+import EditWorkouts from "./EditWorkouts";
 
 function EditModalRoutine(props) {
   const [open, setOpen] = useState(false);
@@ -64,7 +64,7 @@ function EditModalRoutine(props) {
   const handleLevelEdit = (event) => setLevel(event.target.value);
   const handleSeriesEdit = (event) => setSeries(event.target.value);
   const handleRestEdit = (event) => setRest(event.target.value);
-  const handleWorkoutsEdit = (event) => setWorkouts(event.target.value);
+  const updateWorkouts = (workouts) => setWorkouts(workouts);
 
   const handleClickAndSave = async (event) => {
     event.preventDefault();
@@ -125,7 +125,7 @@ function EditModalRoutine(props) {
                   onChange={handleRestEdit}
                 />
 
-                <SelectWorkouts />
+                <EditWorkouts updateWorkouts = {updateWorkouts}/>
               </div>
             </Box>
           </DialogContent>

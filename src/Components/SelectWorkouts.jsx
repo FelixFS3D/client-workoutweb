@@ -34,6 +34,7 @@ function SelectWorkouts(props) {
   const theme = useTheme();
   const [personName, setPersonName] = useState([]);
   const [names, setNames] = useState([]);
+  
   useEffect(() => {
     getWorkouts();
   }, []);

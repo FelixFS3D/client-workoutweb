@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
-import AddMuscle from "./AddMuscle";
+import EditMuscle from "./EditMuscle";
 
 function EditModalWorkout(props) {
 
@@ -40,6 +40,7 @@ function EditModalWorkout(props) {
     };
     try {
       await service.put(`/workouts/${props.eachWorkout._id}`, updateWorkout);
+      props.getWorkouts()
       navigate("/workouts");
     } catch (error) {
       console.log(error);
@@ -63,7 +64,7 @@ function EditModalWorkout(props) {
   }
 
   const handleWorkoutEdit = (event) => setWorkout(event.target.value);
-  const handleMuscleEdit = (event) => setMuscle(event.target.value);
+  const updateMuscles = (muscle) => setMuscle(muscle);
   const handleRepsEdit = (event) => setReps(event.target.value);
   const handleVideoDemoEdit = (event) => setVideoDemo(event.target.value);
   
@@ -71,6 +72,7 @@ function EditModalWorkout(props) {
     event.preventDefault();
     await handleEditWorkout(event); // la función necesita saber qué datos se ingresan en el formulario
     handleClose();
+    
   };
 
   return (
@@ -110,7 +112,11 @@ function EditModalWorkout(props) {
                 value={workout}
                 onChange={handleWorkoutEdit}
               />
-              <AddMuscle />
+
+
+              <EditMuscle updateMuscles={updateMuscles} />
+
+
               <TextField
                 id="outlined-reps-input"
                 label="Reps"
