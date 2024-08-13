@@ -7,7 +7,6 @@ import service from "../service/service.config";
 
 function AddRoutine(props) {
 
-    console.log(props.loggedUserId)
   const [routines, setRoutines] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 //   const navigate = useNavigate();

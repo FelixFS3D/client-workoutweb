@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
+import AddMuscle from "./AddMuscle";
 
 function EditModalWorkout(props) {
 
@@ -39,7 +40,7 @@ function EditModalWorkout(props) {
     };
     try {
       await service.put(`/workouts/${props.eachWorkout._id}`, updateWorkout);
-      navigate("/trainer");
+      navigate("/workouts");
     } catch (error) {
       console.log(error);
       if (error.response && error.response.status === 400) {
@@ -109,13 +110,7 @@ function EditModalWorkout(props) {
                 value={workout}
                 onChange={handleWorkoutEdit}
               />
-              <TextField
-                id="outlined-muscle-input"
-                label="Muscle"
-                color="limes"
-                value={muscle}
-                onChange={handleMuscleEdit}
-              />
+              <AddMuscle />
               <TextField
                 id="outlined-reps-input"
                 label="Reps"

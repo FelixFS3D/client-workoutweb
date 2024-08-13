@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import service from "../service/service.config";
 
+import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -9,7 +8,6 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -20,7 +18,28 @@ const MenuProps = {
     },
   },
 };
-
+const names = [
+  "Abductors",
+  "Adductors",
+  "Biceps",
+  "Calves",
+  "Deltoids",
+  "Erector spinae",
+  "Forearms",
+  "Glutes",
+  "Hamstrings",
+  "Hip flexors",
+  "Latissimus dorsi",
+  "Obliques",
+  "Pectorals",
+  "Quadriceps",
+  "Rectus abdominis",
+  "Rhomboids",
+  "Serratus anterior",
+  "Transverse abdominis",
+  "Trapezius",
+  "Triceps",
+];
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
@@ -29,46 +48,20 @@ function getStyles(name, personName, theme) {
         : theme.typography.fontWeightMedium,
   };
 }
-
-function SelectWorkouts(props) {
+function AddMuscle(props) {
   const theme = useTheme();
   const [personName, setPersonName] = useState([]);
-  const [names, setNames] = useState([]);
-  useEffect(() => {
-    getWorkouts();
-  }, []);
-
-  console.log(personName);
-  const getWorkouts = async () => {
-    try {
-      const response = await service.get("/workouts");
-      console.log(response.data);
-      setNames(response.data);
-
-    } catch (error) {
-      console.log(error);
-      if (error.response && error.response.status === 400) {
-        setErrorMessage(error.response.data.errorMessage);
-      } else {
-        // navigate("/error");
-        console.log(error);
-      }
-    }
-  };
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
     setPersonName(value);
-
-    const workoutIds = value.map((workout) => workout._id)
-    props.updateWorkouts(workoutIds)  // el update pasarle el value 
-  };  
-
+    props.updateMuscles(value)
+  };
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-chip-label">Workouts</InputLabel>
+        <InputLabel id="demo-multiple-chip-label">Muscle</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
@@ -79,21 +72,19 @@ function SelectWorkouts(props) {
           renderValue={(selected) => (
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
               {selected.map((value) => (
-                <Chip key={value._id} label={value.workout} />
+                <Chip key={value} label={value} />
               ))}
             </Box>
           )}
           MenuProps={MenuProps}
         >
-          {names.map((name, index) => (
+          {names.map((name) => (
             <MenuItem
-              key={index}
+              key={name}
               value={name}
-              style={getStyles(name.workout, personName, theme)}
+              style={getStyles(name, personName, theme)}
             >
-              {name.workout}
-
-              {console.log(name.workout)}
+              {name}
             </MenuItem>
           ))}
         </Select>
@@ -102,4 +93,4 @@ function SelectWorkouts(props) {
   );
 }
 
-export default SelectWorkouts;
+export default AddMuscle;

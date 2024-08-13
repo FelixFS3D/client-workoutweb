@@ -10,6 +10,7 @@ import {  useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
+import AddMuscle from "./AddMuscle";
 
 function CreateModalWorkout() {
   const [open, setOpen] = useState(false);
@@ -80,7 +81,7 @@ const navigate = useNavigate()
     };
 
     const handleWorkoutCreate = (event) => setWorkout(event.target.value);
-    const handleMuscleCreate = (event) => setMuscle(event.target.value);
+    const updateMuscles = (muscle) => {setMuscle(muscle);} //Levantar el estado
     const handleRepsCreate = (event) => setReps(event.target.value);
     const handleVideoDemoCreate = (event) => setVideoDemo(event.target.value);
 
@@ -127,12 +128,7 @@ const navigate = useNavigate()
                 color="limes"
                 onChange={handleWorkoutCreate}
               />
-              <TextField
-                id="outlined-muscle-input"
-                label="Muscle"
-                color="limes"
-                onChange={handleMuscleCreate}
-              />
+              <AddMuscle updateMuscles = {updateMuscles}/>
            
               <TextField 
               id="outlined-reps-input" 

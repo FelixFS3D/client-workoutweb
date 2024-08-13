@@ -7,14 +7,14 @@ function Workouts() {
   const [workouts, setWorkouts] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     getWorkouts();
   }, []);
   const getWorkouts = async () => {
     try {
       const response = await service.get("/workouts");
-      console.log(response.data)
+      console.log(response.data);
       setWorkouts(response.data);
     } catch (error) {
       console.log(error);
@@ -22,7 +22,7 @@ function Workouts() {
         setErrorMessage(error.response.data.errorMessage);
       } else {
         // navigate("/error");
-        console.log(error)
+        console.log(error);
       }
     }
     if (workouts === null) {
@@ -42,12 +42,22 @@ function Workouts() {
         console.log(eachWorkout);
         return (
           <div key={index}>
-             <h4>Workout: {eachWorkout.workout}</h4>
-             <h4>Muscle: {eachWorkout.muscle}</h4>
+            <h4>Workout: {eachWorkout.workout}</h4>
+            <h4>Muscle: </h4>
+            {eachWorkout.muscle.map((eachMuscle) => {
+              return <li>{eachMuscle}</li>;
+            })}
             <h4>Reps: {eachWorkout.reps}</h4>
-           <img src={eachWorkout.imgWork} alt="Workout image" style={{height: 150 } }/>
-           <br />
-           <EditModalWorkout eachWorkout = {eachWorkout} getWorkouts={getWorkouts}/>
+            <img
+              src={eachWorkout.imgWork}
+              alt="Workout image"
+              style={{ height: 150 }}
+            />
+            <br />
+            <EditModalWorkout
+              eachWorkout={eachWorkout}
+              getWorkouts={getWorkouts}
+            />
           </div>
         );
       })}

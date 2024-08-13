@@ -56,7 +56,9 @@ function CreateModalRoutine() {
   const handleLevelCreate = (event) => setLevel(event.target.value)
   const handleSeriesCreate = (event) => setSeries(event.target.value)
   const handleRestCreate = (event) => setRest(event.target.value)
-  const handleWorkOutsCreate = (event) => setWorkouts(event.target.value)
+  const updateWorkouts = (workouts) => {
+    setWorkouts(workouts)
+  } // Levantar estado
   
 
 
@@ -118,7 +120,7 @@ function CreateModalRoutine() {
 
 
 
-             <SelectWorkouts />
+             <SelectWorkouts updateWorkouts={updateWorkouts}/>
 
 
 
