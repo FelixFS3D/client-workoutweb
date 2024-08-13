@@ -106,6 +106,7 @@ function Home() {
 
       <div className="signup-call">
         <h2>SIGN UP!</h2>
+        <div id="container-sports-signup">
         <div id="yoga">
           <img src={image1} alt="" />
           <p>YOGA</p>
@@ -117,6 +118,7 @@ function Home() {
         <div id="strength">
           <img src="" alt="" />
           <p>STRENGTH</p>
+        </div>
         </div>
         <button className="signup">Sign up</button>
       </div>

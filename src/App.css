@@ -160,6 +160,55 @@ border-radius: 40px;
   margin-top: 40px;
 }
 
+#container-sports-signup {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+#container-sports-signup div {
+  text-align: center;
+  transform: translate(110px, 120px);
+}
+
+#container-sports-signup img {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+#container-sports-signup p {
+  font-weight: bold;
+  font-size: 24px;
+  color: #343434;
+  margin: 0;
+}
+
+.signup-call .signup {
+  background-color: #c1ff72;
+  color: #343434;
+  font-family: "Pragmatica";
+  font-size: 20px;
+  border: none;
+  border-radius: 45px;
+  height: 80px;
+  width: 200px;
+  transform: translate(-260px, 390px);
+}
+.signup:hover {
+  background-color: #95cb4e;
+}
+.signup:active {
+  background-color: #c1ff75;
+}
+/* #container-sports-signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around ;
+}
 .signup-call #yoga {
   position: absolute;
   display: flex;
@@ -177,7 +226,7 @@ border-radius: 20px;
   font-size: 50px;
   width: 20px;
   position: relative;
-}
+} */
 .footer-site {
 background-color: black;
 
