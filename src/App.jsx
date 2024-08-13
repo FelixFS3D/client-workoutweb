@@ -27,7 +27,7 @@ function App() {
       <Route path = "/routines" element = {<Routines /> }/>
       <Route path = "/trainer" element = {<Trainer /> }/>
       <Route path = "/user/:userid" element = {<User /> }/>
-      <Route path = "/user/:userid/training" element = {<Training />} />
+      <Route path = "/user/training" element = {<Training />} />
 
       <Route path = "/error" element = {<Error /> }/>
       <Route path = "*" element = {<NotFound /> }/>

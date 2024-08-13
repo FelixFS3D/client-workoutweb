@@ -16,13 +16,13 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
 
 const pages = ["Home", "Trainer", "Workouts", "Routines", "User"];
-const settings = ["Profile", "Edit Profile", "Logout"];
+const settings = ["Profile", "Edit Profile", "Sign up", "Login", "Logout"];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -39,38 +39,43 @@ function NavBar() {
     setAnchorElUser(null);
   };
   const handleNavigate = (page) => {
-    if (page === "Home"){
-        navigate("/")            
-    } else if (page === "Trainer"){
-        navigate("/trainer")
+    if (page === "Home") {
+      navigate("/");
+    } else if (page === "Trainer") {
+      navigate("/trainer");
     } else if (page === "Workouts") {
-        navigate("/workouts")
-    } else if (page === "Routines"){
-        navigate("/routines")
-    } else if (page === "User"){
-        navigate("/user/:user")
-    }else {
-        navigate ("/")
+      navigate("/workouts");
+    } else if (page === "Routines") {
+      navigate("/routines");
+    } else if (page === "User") {
+      navigate("/user/:user");
+    } else {
+      navigate("/");
     }
   };
   const handelNavigateUser = (setting) => {
-    if (setting === "Profile"){
-        navigate("/user/:user")            
-    } else if (setting === "Edit Profile"){
-        navigate("/edit-profile")
+    if (setting === "Profile") {
+      navigate("/user/:user");
+    } else if (setting === "Edit Profile") {
+      navigate("/edit-profile");
+    } else if (setting === "Sign up") {
+      navigate("/signup");
+    } else if (setting === "Login") {
+      navigate("/login");
     } else if (setting === "Logout") {
-        // invocar función que hace logout
-        navigate("/")
-    };
+      // invocar función que hace logout
+      navigate("/");
+    }
   };
 
   return (
-    <AppBar position="static"
-    sx={{
-      backgroundColor: "transparent",
-      boxShadow: "none",
-      color: "limes"
-    }}
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: "transparent",
+        boxShadow: "none",
+        color: "limes",
+      }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -151,9 +156,10 @@ function NavBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={() => { 
-                  handleNavigate(page); 
-                  handleCloseNavMenu()}}
+                onClick={() => {
+                  handleNavigate(page);
+                  handleCloseNavMenu();
+                }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
@@ -164,7 +170,10 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="https://media.licdn.com/dms/image/D4D03AQGSlEnQZ-wfuA/profile-displayphoto-shrink_200_200/0/1677072213080?e=2147483647&v=beta&t=V1tceFtA78q9f1FwL9tAhG-CBoLWGflp3d03f13U6_c" />
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://media.licdn.com/dms/image/D4D03AQGSlEnQZ-wfuA/profile-displayphoto-shrink_200_200/0/1677072213080?e=2147483647&v=beta&t=V1tceFtA78q9f1FwL9tAhG-CBoLWGflp3d03f13U6_c"
+                />
               </IconButton>
             </Tooltip>
             <Menu
@@ -184,7 +193,10 @@ function NavBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={() => handelNavigateUser(setting)}>
+                <MenuItem
+                  key={setting}
+                  onClick={() => handelNavigateUser(setting)}
+                >
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

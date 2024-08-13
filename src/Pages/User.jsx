@@ -30,6 +30,9 @@ function User() {
       }
     }
   };
+  const handleTraining = async () => {
+    navigate("/user/training")
+  }
 
   if (user === null) {
     return <h3>...cargando data</h3>;
@@ -57,6 +60,9 @@ function User() {
                 )
               })}
               <br />
+              <Button variant="outlined" onClick={handleTraining}>
+                Let´s go!
+              </Button>
             </div>
           ))}
         </div>
