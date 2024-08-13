@@ -9,17 +9,18 @@ function AddRoutine(props) {
 
   const [routines, setRoutines] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-//   const navigate = useNavigate();
+const navigate = useNavigate();
 
-  const handleCreate = async (event) => {
+  const handleAddRoutine = async (event) => {
     event.preventDefault();
 
-    const newRoutine = {
-      routines: routines,
+    const addRoutine = {
+      routines: routines._id,
     };
 
     try {
-      await service.patch(`/users/${props.loggedUserId}`, newRoutine);
+      await service.patch(`/users/routine`, addRoutine);
+      setRoutines()
       navigate("/routines");
     } catch (error) {
       console.log(error);
@@ -27,9 +28,11 @@ function AddRoutine(props) {
     }
   };
 
+
+
   return (
     <div>
-      <Button variant="outlined" onClick={handleCreate}>Add Routine</Button>
+      <Button variant="outlined" onClick={handleAddRoutine}>Add Routine</Button>
       {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
