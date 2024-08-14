@@ -112,7 +112,7 @@ function NavBar(props) {
               textDecoration: "none",
             }}
           >
-            WORKOUTWEB
+            WORKOUTSWEB
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -178,11 +178,11 @@ function NavBar(props) {
               textDecoration: "none",
             }}
           >
-            WORKOUTWEB
+            WORKOUTSWEB
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             
-            {pagesAdmin.map((page) => (
+            {isAdmin && pagesAdmin.map((page) => (
               <Button
                 key={page}
                 onClick={() => {
@@ -194,7 +194,7 @@ function NavBar(props) {
                 {page}
               </Button>
             ))}
-            {pagesUser.map((page) => (
+            {isLoggedIn && !isAdmin && pagesUser.map((page) => (
               <Button
                 key={page}
                 onClick={() => {
@@ -206,7 +206,7 @@ function NavBar(props) {
                 {page}
               </Button>
             ))}
-            {pagesNotLogged.map((page) => (
+            {!isLoggedIn && pagesNotLogged.map((page) => (
               <Button
                 key={page}
                 onClick={() => {

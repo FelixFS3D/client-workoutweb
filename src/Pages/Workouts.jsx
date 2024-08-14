@@ -45,7 +45,7 @@ function Workouts() {
       {workouts.map((eachWorkout, index) => {
         console.log(eachWorkout);
         return (
-          <div key={index}>
+          <div key={index} className="workouts-container">
             <h4>Workout: {eachWorkout.workout}</h4>
             <h4>Muscle: </h4>
             {eachWorkout.muscle.map((eachMuscle, index) => {

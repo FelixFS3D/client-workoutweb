@@ -9,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 function User() {
   const [user, setUser] = useState(null);
+  // console.log(user.routines[0]._id)
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
@@ -40,11 +41,10 @@ function User() {
   const handleDelete = async (event) => {
     event.preventDefault();
     const pullRoutine = {
-    
-      routineId, // está recibiendo routineId = {eachRoutine._id}
+      routineId: routine._id, // está recibiendo routineId = {eachRoutine._id}
     };
     try {
-      const response = await service.patch(`/users/routine-delete`);
+      const response = await service.patch(`/users/routine-delete`, pullRoutine);
       setUser(response.data)
     } catch (error) {
       console.log(error);
@@ -71,11 +71,15 @@ function User() {
         <EditModalAvatar getUserId={getUserId}/>
         <br />
         <h2>My Routines</h2>
-        <div className="user-routines-container">
+        <div>
+        <Button variant="outlined" onClick={handleNavigate}>
+          Add New Routines
+        </Button>
           {user.routines.map((routine, index) => (
-            <div key={index}>
+            <div key={index} className="user-routines-container">
               <h3>Routine:</h3>
               <h4>Level: {routine.level}</h4>
+              <h4>{routine._id}</h4>
               <h4>Series: {routine.series} times</h4>
               <h4>Rest time: {routine.rest} secs/serie</h4>
               <h4>Workouts: {routine.workouts.workout}</h4>
@@ -88,15 +92,12 @@ function User() {
               <Button variant="outlined" onClick={handleTraining}>
                 Let´s go!
               </Button>
-              <Button variant="outlined" onClick={handleDelete}>
+              <Button variant="outlined" onClick={() => handleDelete(routine._id)}>
                 Delete
               </Button>
             </div>
           ))}
         </div>
-        <Button variant="outlined" onClick={handleNavigate}>
-          Add New Routines
-        </Button>
       </div>
     );
   }

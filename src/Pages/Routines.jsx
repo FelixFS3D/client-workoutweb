@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import NavBar from "../Components/NavBar";
 import service from "../service/service.config";
 import { useNavigate } from "react-router-dom";
@@ -6,8 +6,10 @@ import EditModalRoutine from "../Components/EditModalRoutine"
 import AddRoutine from "../Components/AddRoutine"
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
+import { AuthContext } from "../context/auth.context";
 
 function Routines() {
+  const { isLoggedIn , isAdmin } = useContext(AuthContext)
   const [routines, setRoutines] = useState([]);
   
   const [errorMessage, setErrorMessage] = useState(null);
@@ -50,7 +52,7 @@ function Routines() {
       {routines.map((eachRoutine, index) => {
         console.log(eachRoutine);
         return (
-          <div key={index}>
+          <div key={index} className="routines-container">
             <h4>Level: {eachRoutine.level}</h4>
             <h4>Series: {eachRoutine.series}</h4>
             <h4>Rest: {eachRoutine.rest}</h4>
@@ -61,7 +63,7 @@ function Routines() {
               )
             })}
             <br />
-            <EditModalRoutine eachRoutine={eachRoutine} getRoutines={getRoutines} />
+            {isAdmin && <EditModalRoutine eachRoutine={eachRoutine} getRoutines={getRoutines} />}
             <AddRoutine routineId = {eachRoutine._id}/>
           </div>
         );

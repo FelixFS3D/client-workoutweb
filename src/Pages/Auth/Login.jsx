@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../service/service.config";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import NavBar from "../../Components/NavBar";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 function Login() {
-  const { authenticateUser } = useContext(AuthContext);
+  const { authenticateUser , isLoggedIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -65,6 +65,7 @@ function Login() {
         autoComplete="off"
       >
         <div>
+        <NavBar />
           <TextField
             onChange={handleEmailChange}
             id="outlined-email-input"

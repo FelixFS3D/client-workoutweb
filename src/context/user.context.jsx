@@ -23,8 +23,6 @@ function UserWrapper(props) {
             console.log('Error fetching user data:', error);
         }
     };
-
-    console.log(imgUser)
     const passedContext = {
         imgUser,
         setImgUser

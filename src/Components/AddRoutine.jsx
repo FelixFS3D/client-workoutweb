@@ -26,11 +26,9 @@ const navigate = useNavigate();
     }
   };
 
-
-
   return (
     <div>
-      <Button variant="outlined" onClick={handleAddRoutine}>Add Routine</Button>
+      <Button variant="outlined" onClick={handleAddRoutine}>Add to user </Button>
       {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
