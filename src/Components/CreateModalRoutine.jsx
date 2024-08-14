@@ -16,7 +16,7 @@ function CreateModalRoutine() {
 
   const [open, setOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-
+  const [ name, setName ] = useState("")
   const [ level, setLevel ] = useState("")
   const [ series, setSeries ] = useState("")
   const [ rest, setRest ] = useState("")
@@ -38,6 +38,7 @@ function CreateModalRoutine() {
     event.preventDefault()
 
     const newRoutine = {
+      name,
         level,
         series,
         rest,
@@ -52,7 +53,7 @@ function CreateModalRoutine() {
         navigate("/error")
     }
   }
-
+  const handleNameCreate = (event) => setName(event.target.value)
   const handleLevelCreate = (event) => setLevel(event.target.value)
   const handleSeriesCreate = (event) => setSeries(event.target.value)
   const handleRestCreate = (event) => setRest(event.target.value)
@@ -98,6 +99,12 @@ function CreateModalRoutine() {
             autoComplete="off"
           >
             <div>
+            <TextField
+                id="outlined-name-input"
+                label="Name"
+                color="limes"
+                onChange={handleNameCreate}
+              />
               <TextField
                 id="outlined-level-input"
                 label="Level"

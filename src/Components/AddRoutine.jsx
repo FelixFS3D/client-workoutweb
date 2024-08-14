@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import service from "../service/service.config";
-
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 function AddRoutine(props) {
 
@@ -28,7 +28,7 @@ const navigate = useNavigate();
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleAddRoutine}>Add to user </Button>
+      <Button startIcon={<AddCircleOutlineOutlinedIcon />}variant="outlined" onClick={handleAddRoutine}>Add to user </Button>
       {errorMessage && <p>{errorMessage}</p>}
     </div>
   );

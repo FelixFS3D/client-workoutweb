@@ -53,6 +53,7 @@ function Routines() {
         console.log(eachRoutine);
         return (
           <div key={index} className="routines-container">
+            <h4>Routine: {eachRoutine.name}</h4>
             <h4>Level: {eachRoutine.level}</h4>
             <h4>Series: {eachRoutine.series}</h4>
             <h4>Rest: {eachRoutine.rest}</h4>

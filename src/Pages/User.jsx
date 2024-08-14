@@ -64,7 +64,7 @@ function User() {
     return (
       <div>
         <NavBar user={user}/>
-        <h1>User Area</h1>
+        <h1>{user.name}</h1>
         <EditModalAvatar getUserDetails={getUserDetails}/>
         <br />
         <h2>My Routines</h2>
@@ -74,7 +74,7 @@ function User() {
         </Button>
           {user.routines.map((routine, index) => (
             <div key={index} className="user-routines-container">
-              <h3>Routine:</h3>
+              <h3>Routine:{routine.name}</h3>
               <h4>Level: {routine.level}</h4>
               <h4>{routine._id}</h4>
               <h4>Series: {routine.series} times</h4>

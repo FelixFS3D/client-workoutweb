@@ -20,6 +20,26 @@ const theme = createTheme({
     },
   },
   components: {
+    
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: '#424242', // Fondo del diálogo
+          color: '#FFFFFF', // Color del texto
+        },
+      },
+    },
+    MuiButton :{
+      styleOverrides:{
+        root:{
+          color:`#c1ff75`,
+          '&:hover': {
+          backgroundColor:`#95cb4e`},
+          border: '2px solid #c1ff75'
+
+        }
+      }
+    },
     MuiTextField: {
       styleOverrides: {
         root: {
@@ -38,10 +58,10 @@ const theme = createTheme({
               color: '#fff',  // Color del texto ingresado
             },
             '& fieldset': {
-              borderColor: '#48D995',  // Color del borde por defecto
+              borderColor: '#c1ff75',  // Color del borde por defecto
             },
             '&:hover fieldset': {
-              borderColor: '#A0F9C5',  // Color del borde al hacer hover
+              borderColor: '#95cb4e',  // Color del borde al hacer hover
             },
             '&.Mui-focused fieldset': {
               borderColor: '#32AC6D',  // Color del borde cuando está enfocado

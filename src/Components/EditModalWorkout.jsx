@@ -10,9 +10,10 @@ import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
 import EditMuscle from "./EditMuscle";
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import SaveAltOutlinedIcon from '@mui/icons-material/SaveAltOutlined';
+import SaveAsOutlinedIcon from '@mui/icons-material/SaveAsOutlined';
 function EditModalWorkout(props) {
-
   const [open, setOpen] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -77,7 +78,7 @@ function EditModalWorkout(props) {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button startIcon={<SaveAsOutlinedIcon/>} variant="outlined" onClick={handleClickOpen}>
         Edit WorkOut
       </Button>
       <Dialog
@@ -136,8 +137,8 @@ function EditModalWorkout(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClickAndSave}>Save</Button>
-          <Button onClick={handleDeleteWorkout}>Delete</Button>
+          <Button onClick={handleClickAndSave} startIcon={<SaveAltOutlinedIcon />}>Save</Button>
+          <Button onClick={handleDeleteWorkout} startIcon={<DeleteIcon />}>Delete</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

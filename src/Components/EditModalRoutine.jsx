@@ -10,10 +10,10 @@ import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
 import EditWorkouts from "./EditWorkouts";
-
+import SaveAsOutlinedIcon from '@mui/icons-material/SaveAsOutlined';
 function EditModalRoutine(props) {
   const [open, setOpen] = useState(false);
-
+  const [name, setName] = useState(props.eachRoutine.name);
   const [level, setLevel] = useState(props.eachRoutine.level);
   const [series, setSeries] = useState(props.eachRoutine.series);
   const [rest, setRest] = useState(props.eachRoutine.rest);
@@ -30,6 +30,7 @@ function EditModalRoutine(props) {
   const handleEditRoutine = async (event) => {
     event.preventDefault();
     const updateRoutine = {
+      name,
       level,
       series,
       rest,
@@ -59,7 +60,7 @@ function EditModalRoutine(props) {
       navigate("/error");
     }
   };
-
+  const handleNameEdit = (event) => setName(event.target.value);
   const handleLevelEdit = (event) => setLevel(event.target.value);
   const handleSeriesEdit = (event) => setSeries(event.target.value);
   const handleRestEdit = (event) => setRest(event.target.value);
@@ -74,7 +75,7 @@ function EditModalRoutine(props) {
   return (
     <div>
       <React.Fragment>
-        <Button variant="outlined" onClick={handleClickOpen}>
+        <Button  startIcon={<SaveAsOutlinedIcon/>} variant="outlined" onClick={handleClickOpen}>
           Edit Routine
         </Button>
         <Dialog
@@ -102,6 +103,13 @@ function EditModalRoutine(props) {
               autoComplete="off"
             >
               <div>
+              <TextField
+                  id="outlined-level-input"
+                  label="Name"
+                  color="limes"
+                  value={name}
+                  onChange={handleNameEdit}
+                />
                 <TextField
                   id="outlined-level-input"
                   label="Level"
