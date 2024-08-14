@@ -12,7 +12,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
@@ -22,7 +21,7 @@ const settings = ["Profile", "Edit Profile", "Sign up", "Login", "Logout"];
 
 function NavBar() {
 
-  const { isLoggedIn, authenticateUser } = useContext(AuthContext)
+  const { authenticateUser } = useContext(AuthContext)
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -137,6 +136,7 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
+              {/* operadores de cortocircuito para mostrar los roles */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={() => handleNavigate(page)}>
                   <Typography textAlign="center">{page}</Typography>

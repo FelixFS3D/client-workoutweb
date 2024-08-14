@@ -22,7 +22,6 @@ function Workouts() {
         setErrorMessage(error.response.data.errorMessage);
       } else {
         // navigate("/error");
-        console.log(error);
       }
     }
     if (workouts === null) {
