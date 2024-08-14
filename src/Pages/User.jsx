@@ -6,10 +6,11 @@ import service from "../service/service.config";
 import EditModalAvatar from "../Components/EditModalAvatar";
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AlarmIcon from '@mui/icons-material/Alarm';
 
 function User() {
   const [user, setUser] = useState(null);
-  // console.log(user.routines[0]._id)
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
@@ -17,10 +18,10 @@ function User() {
     navigate("/routines");
   };
   useEffect(() => {
-    getUserId();
+    getUserDetails();
   }, []);
 
-  const getUserId = async () => {
+  const getUserDetails = async () => {
     try {
       const response = await service.get("/users/own");
       console.log(response.data);
@@ -38,14 +39,10 @@ function User() {
     navigate("/user/training")
   }
   
-  const handleDelete = async (event) => {
-    event.preventDefault();
-    const pullRoutine = {
-      routineId: routine._id, // está recibiendo routineId = {eachRoutine._id}
-    };
+  const handleDelete = async (routineId) => {
     try {
-      const response = await service.patch(`/users/routine-delete`, pullRoutine);
-      setUser(response.data)
+      const response = await service.patch(`/users/routine-delete`, {routineId}); // viene del frontend
+      getUserDetails()
     } catch (error) {
       console.log(error);
       if (error.response && error.response.status === 400) {
@@ -68,7 +65,7 @@ function User() {
       <div>
         <NavBar user={user}/>
         <h1>User Area</h1>
-        <EditModalAvatar getUserId={getUserId}/>
+        <EditModalAvatar getUserDetails={getUserDetails}/>
         <br />
         <h2>My Routines</h2>
         <div>
@@ -89,10 +86,10 @@ function User() {
                 )
               })}
               <br />
-              <Button variant="outlined" onClick={handleTraining}>
+              <Button variant="outlined" startIcon={<AlarmIcon />} onClick={handleTraining}>
                 Let´s go!
               </Button>
-              <Button variant="outlined" onClick={() => handleDelete(routine._id)}>
+              <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleDelete(routine._id)}>
                 Delete
               </Button>
             </div>

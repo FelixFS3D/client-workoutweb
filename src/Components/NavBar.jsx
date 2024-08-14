@@ -16,6 +16,7 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { UserContext } from "../context/user.context";
+import EditModalAvatar from "./EditModalAvatar";
 
 //  si no está loggeado
 const pagesNotLogged = ["Home", "About Us"];
@@ -62,14 +63,14 @@ function NavBar(props) {
     } else if (page === "Routines") {
       navigate("/routines");
     } else if (page === "User") {
-      navigate("/user/:user");
+      navigate("/user");
     } else {
       navigate("/");
     }
   };
   const handelNavigateUser = (setting) => {
     if (setting === "Profile") {
-      navigate("/user/:user");
+      navigate("/user");
     } else if (setting === "Sign up") {
       navigate("/signup");
     } else if (setting === "Login") {
@@ -269,6 +270,7 @@ function NavBar(props) {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+              <EditModalAvatar />
             </Menu>
           </Box>
         </Toolbar>

@@ -40,7 +40,7 @@ function Login() {
       if (response.data.role === "admin") {
         navigate("/trainer");
       } else if (response.data.role === "user") {
-        navigate("/user/:userid");
+        navigate("/user");
       } else {
         navigate("/");
       }

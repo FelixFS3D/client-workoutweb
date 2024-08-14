@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
 
+
 function EditModalAvatar(props) {
   const [open, setOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
@@ -65,13 +66,13 @@ function EditModalAvatar(props) {
   const handleClickAndSave = async (event) => {
     event.preventDefault();
     await handleCreate(event); // la función necesita saber qué datos se ingresan en el formulario
-    props.getUserId()
+    props.getUserDetails()
     handleClose();
   };
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button onClick={handleClickOpen}>
         Edit Avatar
       </Button>
       <Dialog
@@ -89,11 +90,14 @@ function EditModalAvatar(props) {
           },
         }}
       >
-        <DialogTitle>Edit Avatar</DialogTitle>
+        <DialogTitle className="edit-avatar-title" sx= {{
+          color: 'black'
+        }}>Edit Avatar</DialogTitle>
         <DialogContent>
           <Box
             sx={{
               "& .MuiTextField-root": { m: 1, width: "25ch" },
+              "& .MuiText-root": {textTransform: "capitalize"},
             }}
             noValidate
             autoComplete="off"

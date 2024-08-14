@@ -27,11 +27,11 @@ function App() {
      <Routes >
       <Route path = "/" element = {<Home />} />
       <Route path = "/signup" element = {<Signup /> }/>
-      <Route path = "/login" element = { !isLoggedIn ? <Login /> : <Navigate to="/" />}/>
+      <Route path = "/login" element = { !isLoggedIn ? <Login /> : <Navigate to="/user" />}/>
       <Route path = "/workouts" element = {<Admin><Workouts /></Admin> }/>
       <Route path = "/routines" element = {<Private><Routines /></Private> }/>
       <Route path = "/trainer" element = {<Admin><Trainer /></Admin> }/>
-      <Route path = "/user/:userid" element = {<Private><User /></Private> }/>
+      <Route path = "/user" element = {<Private><User /></Private> }/>
       <Route path = "/user/training" element = {<Private><Training /></Private>} />
       <Route path = "/error" element = {<Error /> }/>
       <Route path = "*" element = {<NotFound /> }/>

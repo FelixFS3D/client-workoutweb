@@ -55,7 +55,6 @@ function EditModalRoutine(props) {
       await service.delete(`/routines/${props.eachRoutine._id}`);
       handleClose();
       props.getRoutines();
-      props.getRoutines();
     } catch (error) {
       navigate("/error");
     }
