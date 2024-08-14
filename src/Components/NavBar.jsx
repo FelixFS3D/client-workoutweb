@@ -16,12 +16,19 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-const pages = ["Home", "Trainer", "Workouts", "Routines", "User"];
-const settings = ["Profile", "Edit Profile", "Sign up", "Login", "Logout"];
+//  si no está loggeado
+const pagesNotLogged = ["Home", "About Us"];
+const settingsNotLogged = ["Sign up", "Login"];
+// si está loggeado y es admin
+const pagesAdmin = ["Home", "Trainer", "User", "Workouts", "Routines"];
+const settingsAdmin = ["Profile", "Edit Profile", "Logout"];
+// si está loggeado y es user
+const pagesUser = ["User", "Routines"]
+const settingsUser = ["Profile", "Edit Profile","Logout"]
 
 function NavBar() {
 
-  const { authenticateUser } = useContext(AuthContext)
+  const { isLoggedIn , isAdmin ,authenticateUser } = useContext(AuthContext)
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -137,11 +144,22 @@ function NavBar() {
               }}
             >
               {/* operadores de cortocircuito para mostrar los roles */}
-              {pages.map((page) => (
+              { isAdmin && pagesAdmin.map((page) => (
                 <MenuItem key={page} onClick={() => handleNavigate(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
+              { isLoggedIn && !isAdmin && pagesUser.map((page) => (
+                <MenuItem key={page} onClick={() => handleNavigate(page)}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+              {!isLoggedIn && pagesNotLogged.map((page) => (
+                <MenuItem key={page} onClick={() => handleNavigate(page)}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+              
             </Menu>
           </Box>
           <FitnessCenterIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -163,7 +181,32 @@ function NavBar() {
             WORKOUTWEB
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            
+            {pagesAdmin.map((page) => (
+              <Button
+                key={page}
+                onClick={() => {
+                  handleNavigate(page);
+                  handleCloseNavMenu();
+                }}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {page}
+              </Button>
+            ))}
+            {pagesUser.map((page) => (
+              <Button
+                key={page}
+                onClick={() => {
+                  handleNavigate(page);
+                  handleCloseNavMenu();
+                }}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {page}
+              </Button>
+            ))}
+            {pagesNotLogged.map((page) => (
               <Button
                 key={page}
                 onClick={() => {
@@ -202,7 +245,23 @@ function NavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              { isAdmin && settingsAdmin.map((setting) => (
+                <MenuItem
+                  key={setting}
+                  onClick={() => handelNavigateUser(setting)}
+                >
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+              { isLoggedIn && !isAdmin &&  settingsUser.map((setting) => (
+                <MenuItem
+                  key={setting}
+                  onClick={() => handelNavigateUser(setting)}
+                >
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+              { !isLoggedIn && settingsNotLogged.map((setting) => (
                 <MenuItem
                   key={setting}
                   onClick={() => handelNavigateUser(setting)}
