@@ -6,28 +6,19 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useNavigate } from "react-router-dom";
+import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
-import AddMuscle from "./AddMuscle";
-import Stack from "@mui/material/Stack";
-import CircularProgress from "@mui/material/CircularProgress";
 
-function CreateModalWorkout() {
+function EditModalAvatar(props) {
   const [open, setOpen] = useState(false);
-  // cloudinary
   const [imageUrl, setImageUrl] = useState(null);
-
   const [isUploading, setIsUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [workout, setWorkout] = useState("");
-  const [muscle, setMuscle] = useState("");
-  const [reps, setReps] = useState("");
-  const [videoDemo, setVideoDemo] = useState("");
-
   const navigate = useNavigate();
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -35,7 +26,6 @@ function CreateModalWorkout() {
   const handleClose = () => {
     setOpen(false);
   };
-
   const handleFileUpload = async (event) => {
     // console.log("The file to be uploaded is: ", e.target.files[0]);
 
@@ -46,7 +36,6 @@ function CreateModalWorkout() {
     setIsUploading(true); // to start the loading animation
     const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
     uploadData.append("image", event.target.files[0]);
-
     try {
       const response = await service.post("/upload", uploadData);
 
@@ -57,20 +46,13 @@ function CreateModalWorkout() {
       navigate("/error");
     }
   };
-
   const handleCreate = async (event) => {
     event.preventDefault();
-
-    const newWorkout = {
-      workout,
-      muscle,
-      reps,
-      videoDemo,
-      imgWork: imageUrl,
+    const newAvatar = {
+      imgUser: imageUrl,
     };
     try {
-      await service.post("/workouts", newWorkout);
-      navigate("/trainer");
+      await service.patch("/users/avatar", newAvatar);
     } catch (error) {
       console.log(error);
       if (error.response && error.response.status === 400) {
@@ -80,24 +62,17 @@ function CreateModalWorkout() {
       }
     }
   };
-
-  const handleWorkoutCreate = (event) => setWorkout(event.target.value);
-  const updateMuscles = (muscle) => {
-    setMuscle(muscle);
-  }; //Levantar el estado
-  const handleRepsCreate = (event) => setReps(event.target.value);
-  const handleVideoDemoCreate = (event) => setVideoDemo(event.target.value);
-
   const handleClickAndSave = async (event) => {
     event.preventDefault();
     await handleCreate(event); // la función necesita saber qué datos se ingresan en el formulario
+    props.getUserId()
     handleClose();
   };
 
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Create WorkOut
+        Edit Avatar
       </Button>
       <Dialog
         open={open}
@@ -114,7 +89,7 @@ function CreateModalWorkout() {
           },
         }}
       >
-        <DialogTitle>Creating Workout</DialogTitle>
+        <DialogTitle>Edit Avatar</DialogTitle>
         <DialogContent>
           <Box
             sx={{
@@ -125,29 +100,9 @@ function CreateModalWorkout() {
           >
             <div>
               <TextField
-                id="outlined-workout-input"
-                label="Workout"
-                color="limes"
-                onChange={handleWorkoutCreate}
-              />
-              <AddMuscle updateMuscles={updateMuscles} />
-
-              <TextField
-                id="outlined-reps-input"
-                label="Reps"
-                color="limes"
-                onChange={handleRepsCreate}
-              />
-              <TextField
-                id="outlined-videoDemo-input"
-                label="URL Video"
-                color="limes"
-                onChange={handleVideoDemoCreate}
-              />
-              <TextField
-                id="outlined-imgWork-input"
+                id="outlined-imgUser-input"
                 type="file"
-                name="imgWork"
+                name="imgUser"
                 onChange={handleFileUpload}
                 disabled={isUploading}
                 color="limes"
@@ -178,4 +133,4 @@ function CreateModalWorkout() {
   );
 }
 
-export default CreateModalWorkout;
+export default EditModalAvatar;

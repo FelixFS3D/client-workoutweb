@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import service from "../service/service.config";
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const AuthContext = createContext()
 
@@ -68,7 +70,9 @@ function AuthWrapper(props) {
   }, [])
 
   if (isAuthenticating) {
-    return <h3>... validando credenciales</h3>
+    return <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
+    <CircularProgress color="success" />
+  </Stack>
   }
 
   return (

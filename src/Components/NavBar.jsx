@@ -15,20 +15,23 @@ import MenuItem from "@mui/material/MenuItem";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { UserContext } from "../context/user.context";
 
 //  si no está loggeado
 const pagesNotLogged = ["Home", "About Us"];
 const settingsNotLogged = ["Sign up", "Login"];
 // si está loggeado y es admin
 const pagesAdmin = ["Home", "Trainer", "User", "Workouts", "Routines"];
-const settingsAdmin = ["Profile", "Edit Profile", "Logout"];
+const settingsAdmin = ["Profile", "Logout"];
 // si está loggeado y es user
 const pagesUser = ["User", "Routines"]
-const settingsUser = ["Profile", "Edit Profile","Logout"]
+const settingsUser = ["Profile","Logout"]
 
-function NavBar() {
+function NavBar(props) {
+  console.log(props)
+  const { isLoggedIn , isAdmin , authenticateUser } = useContext(AuthContext)
 
-  const { isLoggedIn , isAdmin ,authenticateUser } = useContext(AuthContext)
+  const { imgUser, setImgUser} = useContext(UserContext)
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -67,8 +70,6 @@ function NavBar() {
   const handelNavigateUser = (setting) => {
     if (setting === "Profile") {
       navigate("/user/:user");
-    } else if (setting === "Edit Profile") {
-      navigate("/edit-profile");
     } else if (setting === "Sign up") {
       navigate("/signup");
     } else if (setting === "Login") {
@@ -143,7 +144,6 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {/* operadores de cortocircuito para mostrar los roles */}
               { isAdmin && pagesAdmin.map((page) => (
                 <MenuItem key={page} onClick={() => handleNavigate(page)}>
                   <Typography textAlign="center">{page}</Typography>
@@ -224,8 +224,8 @@ function NavBar() {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
-                  alt="Remy Sharp"
-                  src="https://media.licdn.com/dms/image/D4D03AQGSlEnQZ-wfuA/profile-displayphoto-shrink_200_200/0/1677072213080?e=2147483647&v=beta&t=V1tceFtA78q9f1FwL9tAhG-CBoLWGflp3d03f13U6_c"
+                  alt=""
+                  src={isLoggedIn ? imgUser : ""} //si está loggeado, si está definido el usuario, accede a props.user.imgUser
                 />
               </IconButton>
             </Tooltip>

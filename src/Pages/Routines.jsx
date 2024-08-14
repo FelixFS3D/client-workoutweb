@@ -4,6 +4,8 @@ import service from "../service/service.config";
 import { useNavigate } from "react-router-dom";
 import EditModalRoutine from "../Components/EditModalRoutine"
 import AddRoutine from "../Components/AddRoutine"
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Routines() {
   const [routines, setRoutines] = useState([]);
@@ -30,7 +32,9 @@ function Routines() {
       }
     }
     if (routines === null) {
-      return <h3>...cargando data</h3>;
+      return <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
+      <CircularProgress color="success" />
+    </Stack>;
     } else {
     }
     if (errorMessage) {

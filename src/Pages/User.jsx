@@ -3,6 +3,9 @@ import NavBar from "../Components/NavBar";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import service from "../service/service.config";
+import EditModalAvatar from "../Components/EditModalAvatar";
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function User() {
   const [user, setUser] = useState(null);
@@ -33,17 +36,39 @@ function User() {
   const handleTraining = async () => {
     navigate("/user/training")
   }
+  
+  const handleDelete = async (event) => {
+    event.preventDefault();
+    const pullRoutine = {
+    
+      routineId, // está recibiendo routineId = {eachRoutine._id}
+    };
+    try {
+      const response = await service.patch(`/users/routine-delete`);
+      setUser(response.data)
+    } catch (error) {
+      console.log(error);
+      if (error.response && error.response.status === 400) {
+        setErrorMessage(error.response.data.errorMessage);
+      } else {
+        navigate("/error");
+      }
+    }
+  }
 
   if (user === null) {
-    return <h3>...cargando data</h3>;
+    return <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
+    <CircularProgress color="success" />
+  </Stack>;
   } else {
     if (errorMessage) {
       return <h3>Error: {errorMessage}</h3>;
     }
     return (
       <div>
-        <NavBar />
+        <NavBar user={user}/>
         <h1>User Area</h1>
+        <EditModalAvatar getUserId={getUserId}/>
         <br />
         <h2>My Routines</h2>
         <div className="user-routines-container">
@@ -62,6 +87,9 @@ function User() {
               <br />
               <Button variant="outlined" onClick={handleTraining}>
                 Let´s go!
+              </Button>
+              <Button variant="outlined" onClick={handleDelete}>
+                Delete
               </Button>
             </div>
           ))}

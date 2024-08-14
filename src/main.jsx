@@ -5,6 +5,7 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { AuthWrapper } from "./context/auth.context.jsx";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { UserWrapper } from "./context/user.context.jsx";
 
 const theme = createTheme({
   palette: {
@@ -54,10 +55,12 @@ const theme = createTheme({
 ReactDOM.createRoot(document.getElementById("root")).render(
 
   <AuthWrapper>
+    <UserWrapper>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
     </BrowserRouter>
+    </UserWrapper>
   </AuthWrapper>
 );

@@ -28,7 +28,6 @@ function App() {
       <Route path = "/trainer" element = {<Trainer /> }/>
       <Route path = "/user/:userid" element = {<User /> }/>
       <Route path = "/user/training" element = {<Training />} />
-
       <Route path = "/error" element = {<Error /> }/>
       <Route path = "*" element = {<NotFound /> }/>
      </Routes>
