@@ -13,8 +13,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-
+/* MAIN */
 .main-background {
   background-size: cover;
   background-position: center;
@@ -26,7 +25,7 @@
   font-size: 120px;
   width: 45vw;
   margin: 0;
-  color: #c1ff72;
+  color: #C1FF72;
   display: flex;
   flex-wrap: wrap;
   transform: translate(80px, 300px);
@@ -36,10 +35,9 @@
 #h1-white{
   color: white;
 }
-
 .main-background .signup {
   padding: 10px 20px;
-  background-color: #c1ff72;
+  background-color: #C1FF72;
   color: #343434;
   font-family: "Pragmatica";
   font-size: 20px;
@@ -50,17 +48,17 @@
   transform: translate(900px, 420px);
 }
 .signup:hover {
-  background-color: #95cb4e;
+  background-color: #95CB4E;
 }
 .signup:active {
-  background-color: #c1ff75;
+  background-color: #C1FF75;
 }
-
+/* OPINIONS */
 .opinions-container, .signup-call{
   width: 100vw;
   height: 60vh;
   margin-top: 0;
-  background-color: #f1f1f1;
+  background-color: #F1F1F1;
   position: relative;
   display: flex;
   justify-content: center;
@@ -71,29 +69,34 @@
   font-size: 2.4em;
   position: absolute;
   margin-top: 40px;
-
 }
 #op1, #op2, #op3, #op4{
   width: 220px;
   height: 350px;
   border:0px solid black;
   border-radius: 30px;
-  background-color: #d1ff9e;
+  background-color: #D1FF9E;
   font-family: "Pragmatica";
   font-size: small;
   color: #343434;
   margin: 40px 10px 0 10px;
   transform: translateY(100px);
- 
 }
-
+.opinions-container p {
+  width: 180px;
+  height: 280px;
+  text-align: center;
+  margin-top: 60px;
+  margin-left: 20px
+}
 #avatar1, #avatar2, #avatar3, #avatar4{
 width: 80px;
 height: 80px;
 position: absolute;
 border-radius: 40px;
+transform: translate(65px, -40px);
 }
-
+/* OUR APP */
 .our-workout-routines-container {
   background-size: cover;
   background-position: center;
@@ -106,13 +109,13 @@ border-radius: 40px;
   width: 28vw;
   position: absolute;
   margin: 0;
-  color: #c1ff72;
+  color: #C1FF72;
   transform: translate(80px, 40px);
   line-height: 1;
 }
 .our-workout-routines-container .signup {
   padding: 10px 20px;
-  background-color: #c1ff72;
+  background-color: #C1FF72;
   color: #343434;
   font-family: "Pragmatica";
   font-size: 20px;
@@ -123,12 +126,11 @@ border-radius: 40px;
   transform: translate(160px, 480px);
 }
 .signup:hover {
-  background-color: #95cb4e;
+  background-color: #95CB4E;
 }
 .signup:active {
-  background-color: #c1ff75;
+  background-color: #C1FF75;
 }
-
 .texts {
   position: absolute;
   right: 50px;
@@ -137,41 +139,35 @@ border-radius: 40px;
   flex-direction: column;
   gap: 30px;
 }
-
 .text-block h3 {
   font-size: 35px;
   width: 200px;
   gap: 1px;
-  color: #c1ff72;
+  color: #C1FF72;
   margin: 0 0 10px 0;
 }
-
 .text-block p {
   font-family: "Pragmatica";
   font-size: 14px;
   width: 400px;
 }
-
-
+/* SIGN UP CALL */
 .signup-call h2 {
   color: #343434;
   font-size: 2.4em;
   position: absolute;
   margin-top: 40px;
 }
-
 #container-sports-signup {
   display: flex;
   justify-content: center;
   gap: 40px;
   margin-top: 20px;
 }
-
 #container-sports-signup div {
   text-align: center;
   transform: translate(110px, 120px);
 }
-
 #container-sports-signup img {
   width: 150px;
   height: 150px;
@@ -179,16 +175,14 @@ border-radius: 40px;
   object-fit: cover;
   margin-bottom: 10px;
 }
-
 #container-sports-signup p {
   font-weight: bold;
   font-size: 24px;
   color: #343434;
   margin: 0;
 }
-
 .signup-call .signup {
-  background-color: #c1ff72;
+  background-color: #C1FF72;
   color: #343434;
   font-family: "Pragmatica";
   font-size: 20px;
@@ -199,55 +193,59 @@ border-radius: 40px;
   transform: translate(-260px, 390px);
 }
 .signup:hover {
-  background-color: #95cb4e;
+  background-color: #95CB4E;
 }
 .signup:active {
-  background-color: #c1ff75;
+  background-color: #C1FF75;
 }
-/* #container-sports-signup {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around ;
-}
-.signup-call #yoga {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.signup-call #yoga img{
-width: 150px;
-height: 150px;
-position: relative;
-border-radius: 20px;
-}
-.signup-call #yoga p {
-  color:#343434;
-  font-size: 50px;
-  width: 20px;
-  position: relative;
-} */
+/* FOOTER */
 .footer-site {
-background-color: black;
-
+  background-size: cover;
+  background-position: center;
+  height: 20vh;
+  width: 100vw;
+  position: relative;
 }
-
-
+.footer-site{
+  position: absolute;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}
+.footer-site h5 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-size: 24px;
+}
+.footer-site a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-family: "Pragmatica";
+}
+.footer-site a:hover {
+  text-decoration: underline;
+}
+.info-1, .info-2 {
+  transform: translateY(30px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 /* CHRONO */
 .chrono {
   width: 300px;
   height: 300px;
   margin-top: 50px;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid #C1FF72;
   border-radius: 1500px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-
 .chrono .buttons-chrono {
   margin: 20px;
 }
-
-/* MUI */

@@ -7,10 +7,12 @@ import avatar2 from "../images/avatar2.webp";
 import avatar3 from "../images/avatar3.jpg";
 import avatar4 from "../images/avatar4.webp";
 import image1 from "../images/women.jpeg"
+import image2 from "../images/mancuernas.jpg"
+import image3 from "../images/estiramiento.webp"
+import footer from "../images/equipment.jpg";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-
   const navigate = useNavigate();
   const handleNavigate = async () => {
     navigate("/signup");
@@ -28,7 +30,6 @@ function Home() {
         </h1>
         <button className="signup" onClick={handleNavigate}>Sign up</button>
       </div>
-
       <div className="opinions-container">
         <h3>LARGE COMMUNITY OF USERS</h3>
         <div id="op1">
@@ -38,7 +39,7 @@ function Home() {
             personalized plans keep me motivated, and I've seen significant
             improvements in my fitness. Highly recommend it to anyone looking to
             stay on track with their exercise goals."
-            <span>- Casper Berkley</span>
+            <br /><span>- <br />Casper Berkley</span>
           </p>
         </div>
         <div id="op2">
@@ -47,7 +48,7 @@ function Home() {
             "Using this web app has made it so much easier to stay consistent
             with my workouts. The variety of routines keeps things fresh, and
             the easy-to-follow instructions make it perfect for all fitness
-            levels. It's a game-changer!"<span>- Olivia Wentworth</span>
+            levels. It's a game-changer!"<br /><span>- <br />Olivia Wentworth</span>
           </p>
         </div>
         <div id="op3">
@@ -57,7 +58,7 @@ function Home() {
             simplicity and effectiveness. The ability to track progress and
             adjust routines based on my goals has kept me engaged and committed.
             A must-try for fitness enthusiasts!
-            <span>- Chidi Eze</span>
+            <br /><span>- <br />Chidi Eze</span>
           </p>
         </div>
         <div id="op4">
@@ -67,11 +68,10 @@ function Home() {
             detailed exercise plans are tailored to my needs, and the progress
             tracking keeps me motivated. It's the best fitness tool I've used so
             far."
-            <span>- Parker Willis</span>
+            <br /><span>- <br />Parker Willis</span>
           </p>
         </div>
       </div>
-
       <div className="our-workout-routines-container"
         style={{
           backgroundImage: `url(${myImage2})`,
@@ -109,39 +109,41 @@ function Home() {
           </div>
         </div>
       </div>
-
       <div className="signup-call">
         <h2>SIGN UP!</h2>
         <div id="container-sports-signup">
         <div id="yoga">
-          <img src={image1} alt="" />
+          <img src={image1} alt="yoga" />
           <p>YOGA</p>
         </div>
         <div id="hiit">
-          <img src="" alt="" />
+          <img src={image2} alt="hiit" />
           <p>HIIT</p>
         </div>
         <div id="strength">
-          <img src="" alt="" />
+          <img src={image3} alt="strength" />
           <p>STRENGTH</p>
         </div>
         </div>
         <button className="signup" onClick={handleNavigate}>Sign up</button>
       </div>
-
-      <div className="footer-site">
-        <h5>FIND US</h5>
-        <a href="">GitHub</a>
-        <a href="">GitHub</a>
-        <h5>FOLLOW US</h5>
-        <a href="">Félix</a>
-        <a href="">Iñigo</a>
-        <h5>CAMPO VACÍO</h5>
-        <a href="">AAAAAAAA</a>
-        <a href="">AAAAAAAA</a>
+      <div className="footer-site" style={{
+          backgroundImage: `url(${footer})`,
+        }}>
+          <div className="info-1">
+        <h5>FÉLIX</h5>
+        <a href="https://github.com/FelixFS3D">GitHub</a>
+        <a href="https://www.linkedin.com/in/f%C3%A9lix-romero-gonz%C3%A1lez-731670319/">LinkedIn</a>
+        <a href="felix.fs3d@gmail.com">felix.fs3d@gmail.com</a>
+        </div>
+        <div className="info-2">
+        <h5>IÑIGO</h5>
+        <a href="https://github.com/inigoestebangomez">GitHub</a>
+        <a href="https://www.linkedin.com/in/inigo-esteban-gomez/">LinkedIn</a>
+        <a href="iesteban7@hotmail.com">iesteban7@hotmail.com</a>
+        </div>
       </div>
     </>
   );
 }
-
 export default Home;

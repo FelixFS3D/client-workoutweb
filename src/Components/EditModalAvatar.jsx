@@ -72,7 +72,7 @@ function EditModalAvatar(props) {
 
   return (
     <React.Fragment>
-      <Button onClick={handleClickOpen}>
+      <Button variant = "avatar"onClick={handleClickOpen}>
         Edit Avatar
       </Button>
       <Dialog
@@ -91,7 +91,7 @@ function EditModalAvatar(props) {
         }}
       >
         <DialogTitle className="edit-avatar-title" sx= {{
-          color: 'black'
+         
         }}>Edit Avatar</DialogTitle>
         <DialogContent>
           <Box

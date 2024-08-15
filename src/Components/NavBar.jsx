@@ -106,7 +106,7 @@ function NavBar(props) {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -184,7 +184,8 @@ function NavBar(props) {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             
             {isAdmin && pagesAdmin.map((page) => (
-              <Button
+              <Button 
+              variant = "extenNavbar"
                 key={page}
                 onClick={() => {
                   handleNavigate(page);
@@ -197,6 +198,7 @@ function NavBar(props) {
             ))}
             {isLoggedIn && !isAdmin && pagesUser.map((page) => (
               <Button
+              variant = "extenNavbar"
                 key={page}
                 onClick={() => {
                   handleNavigate(page);
@@ -209,6 +211,7 @@ function NavBar(props) {
             ))}
             {!isLoggedIn && pagesNotLogged.map((page) => (
               <Button
+              variant = "extenNavbar"
                 key={page}
                 onClick={() => {
                   handleNavigate(page);

@@ -65,7 +65,7 @@ function User() {
       <div>
         <NavBar user={user}/>
         <h1>{user.name}</h1>
-        <EditModalAvatar getUserDetails={getUserDetails}/>
+      
         <br />
         <h2>My Routines</h2>
         <div>
