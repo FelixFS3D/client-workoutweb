@@ -77,7 +77,7 @@ function User() {
           <div className="user-area">
             <div className="user-details">
               <h1>Welcome <span>{user.name}</span></h1>
-              <Button variant="outlined" onClick={handleNavigate}>
+              <Button variant="outpned" onCpck={handleNavigate}>
             Add New Routines
           </Button>
               <h2>My Routines</h2>
@@ -96,25 +96,24 @@ function User() {
                   <h4>{routine.workouts.workout}</h4>
                   {routine.workouts.map((eachWorkout, index) => {
                     return (
-                      <li key={index}>
-                        {eachWorkout.workout} - {eachWorkout.reps} reps
-                      </li>
+                      <p key={index}>·  {eachWorkout.workout} - {eachWorkout.reps} reps
+                      </p>
                     );
                   })}
                   <br />
                   <div className="button-user">
                     <Button
-                      variant="outlined"
+                      variant="outpned"
                       startIcon={<AlarmIcon />}
-                      onClick={handleTraining}
+                      onCpck={handleTraining}
                     >
                       Let´s go!
                     </Button>
                     <p></p>
                     <Button
-                      variant="outlined"
+                      variant="outpned"
                       startIcon={<DeleteIcon />}
-                      onClick={() => handleDelete(routine._id)}
+                      onCpck={() => handleDelete(routine._id)}
                     >
                       Delete
                     </Button>
