@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Pragmatica';
-  src: url('fonts/fonnts.com-Pragmatica_Ext_Book.otf') format('truetype');
+  font-family: "Pragmatica";
+  src: url("fonts/fonnts.com-Pragmatica_Ext_Book.otf") format("truetype");
 }
 #root {
   font-family: "Anton", sans-serif;
@@ -25,19 +25,19 @@
   font-size: 120px;
   width: 45vw;
   margin: 0;
-  color: #C1FF72;
+  color: #c1ff72;
   display: flex;
   flex-wrap: wrap;
   transform: translate(80px, 300px);
   line-height: 1;
-  position: absolute
+  position: absolute;
 }
-#h1-white{
+#h1-white {
   color: white;
 }
 .main-background .signup {
   padding: 10px 20px;
-  background-color: #C1FF72;
+  background-color: #c1ff72;
   color: #343434;
   font-family: "Pragmatica";
   font-size: 20px;
@@ -48,17 +48,18 @@
   transform: translate(900px, 420px);
 }
 .signup:hover {
-  background-color: #95CB4E;
+  background-color: #95cb4e;
 }
 .signup:active {
-  background-color: #C1FF75;
+  background-color: #c1ff75;
 }
 /* OPINIONS */
-.opinions-container, .signup-call{
+.opinions-container,
+.signup-call {
   width: 100vw;
   height: 60vh;
   margin-top: 0;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   position: relative;
   display: flex;
   justify-content: center;
@@ -70,12 +71,15 @@
   position: absolute;
   margin-top: 40px;
 }
-#op1, #op2, #op3, #op4{
+#op1,
+#op2,
+#op3,
+#op4 {
   width: 220px;
   height: 350px;
-  border:0px solid black;
+  border: 0px solid black;
   border-radius: 30px;
-  background-color: #D1FF9E;
+  background-color: #d1ff9e;
   font-family: "Pragmatica";
   font-size: small;
   color: #343434;
@@ -87,14 +91,17 @@
   height: 280px;
   text-align: center;
   margin-top: 60px;
-  margin-left: 20px
+  margin-left: 20px;
 }
-#avatar1, #avatar2, #avatar3, #avatar4{
-width: 80px;
-height: 80px;
-position: absolute;
-border-radius: 40px;
-transform: translate(65px, -40px);
+#avatar1,
+#avatar2,
+#avatar3,
+#avatar4 {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  border-radius: 40px;
+  transform: translate(65px, -40px);
 }
 /* OUR APP */
 .our-workout-routines-container {
@@ -109,13 +116,13 @@ transform: translate(65px, -40px);
   width: 28vw;
   position: absolute;
   margin: 0;
-  color: #C1FF72;
+  color: #c1ff72;
   transform: translate(80px, 40px);
   line-height: 1;
 }
 .our-workout-routines-container .signup {
   padding: 10px 20px;
-  background-color: #C1FF72;
+  background-color: #c1ff72;
   color: #343434;
   font-family: "Pragmatica";
   font-size: 20px;
@@ -126,10 +133,10 @@ transform: translate(65px, -40px);
   transform: translate(160px, 480px);
 }
 .signup:hover {
-  background-color: #95CB4E;
+  background-color: #95cb4e;
 }
 .signup:active {
-  background-color: #C1FF75;
+  background-color: #c1ff75;
 }
 .texts {
   position: absolute;
@@ -143,7 +150,7 @@ transform: translate(65px, -40px);
   font-size: 35px;
   width: 200px;
   gap: 1px;
-  color: #C1FF72;
+  color: #c1ff72;
   margin: 0 0 10px 0;
 }
 .text-block p {
@@ -182,7 +189,7 @@ transform: translate(65px, -40px);
   margin: 0;
 }
 .signup-call .signup {
-  background-color: #C1FF72;
+  background-color: #c1ff72;
   color: #343434;
   font-family: "Pragmatica";
   font-size: 20px;
@@ -193,10 +200,10 @@ transform: translate(65px, -40px);
   transform: translate(-260px, 390px);
 }
 .signup:hover {
-  background-color: #95CB4E;
+  background-color: #95cb4e;
 }
 .signup:active {
-  background-color: #C1FF75;
+  background-color: #c1ff75;
 }
 /* FOOTER */
 .footer-site {
@@ -206,11 +213,11 @@ transform: translate(65px, -40px);
   width: 100vw;
   position: relative;
 }
-.footer-site{
+.footer-site {
   position: absolute;
-display: flex;
-flex-direction: row;
-justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .footer-site h5 {
   margin-bottom: 10px;
@@ -228,7 +235,8 @@ justify-content: space-around;
 .footer-site a:hover {
   text-decoration: underline;
 }
-.info-1, .info-2 {
+.info-1,
+.info-2 {
   transform: translateY(30px);
   display: flex;
   align-items: center;
@@ -239,7 +247,7 @@ justify-content: space-around;
   width: 300px;
   height: 300px;
   margin-top: 50px;
-  border: 1px solid #C1FF72;
+  border: 1px solid #c1ff72;
   border-radius: 1500px;
   display: flex;
   flex-direction: column;
@@ -249,3 +257,52 @@ justify-content: space-around;
 .chrono .buttons-chrono {
   margin: 20px;
 }
+/* Traines */
+.trainer-background {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+.card-trainer-area {
+  background-color: #060d0c;
+  margin-top: 0px;
+  margin-left: 12vw;
+  margin-right: 12vw;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+.card-trainer-area h1 {
+  color: white;
+  margin: 0;
+  text-align: center;
+  
+  font-size: 48px;
+}
+.card-trainer-area h3 {
+  margin: 0;
+  text-align: center;
+  
+  font-size: 38px;
+}
+.card-trainer-area h4,
+li,
+p {
+  font-family: "Pragmatica", sans-serif;
+  font-size: 18px;
+ 
+}
+.card-trainer-area h3 #green {
+  color: #c1ff72;
+  
+}
+.card-trainer-area h3 #white {
+  color: white;
+  
+}
+
