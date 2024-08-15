@@ -105,7 +105,7 @@ function EditModalWorkout(props) {
             noValidate
             autoComplete="off"
           >
-            <div>
+            <div className="modal-container">
               <TextField
                 id="outlined-workout-input"
                 label="Workout"

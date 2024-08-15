@@ -17,6 +17,8 @@ const MenuProps = {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       width: 250,
+      backgroundColor: "#515151",
+      color: "#c1ff72"
     },
   },
 };
@@ -51,8 +53,7 @@ function SelectWorkouts(props) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);
       } else {
-        // navigate("/error");
-        console.log(error);
+        navigate("/error");
       }
     }
   };
@@ -68,19 +69,41 @@ function SelectWorkouts(props) {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-chip-label">Workouts</InputLabel>
+      <FormControl sx={{ m: 1, width: 200 }}>
+        <InputLabel id="demo-multiple-chip-label" sx={{
+            color: "#c1ff72", // Color de la letra del label
+          }}>Workouts</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
           multiple
           value={personName}
           onChange={handleChange}
-          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+          input={<OutlinedInput id="select-multiple-chip" label="Chip" sx={{
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#c1ff72", // Color de borde verde
+            },
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#95cb4e", // Color de borde verde al pasar el mouse
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#c1ff72", // Color de borde verde al enfocarse
+            },
+            "& .MuiSvgIcon-root": {
+              color: "#95cb4e", // Color de la flecha
+            },
+            color: "#95cb4e", // Color del texto
+          }}/>}
           renderValue={(selected) => (
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, color: "#c1ff72", // Letra del chip verde
+              "&.Mui-selected": {
+                color: "#c1ff72", // Texto en verde cuando está seleccionado
+              }, }}>
               {selected.map((value) => (
-                <Chip key={value._id} label={value.workout} />
+                <Chip key={value._id} label={value.workout} sx={{
+                  backgroundColor: "#222", 
+                  color: "#c1ff72",
+                }}/>
               ))}
             </Box>
           )}
@@ -91,6 +114,15 @@ function SelectWorkouts(props) {
               key={index}
               value={name}
               style={getStyles(name.workout, personName, theme)}
+              sx={{
+                "&.Mui-selected": {
+                  backgroundColor: "333", // Fondo gris oscuro al seleccionarse
+                  color: "#4caf50", // Texto en verde cuando está seleccionado
+                },
+                "&:hover": {
+                  backgroundColor: "#444", // Fondo gris claro al pasar el mouse sobre un elemento
+                },
+              }}
             >
               {name.workout}
 

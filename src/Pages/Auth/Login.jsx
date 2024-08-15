@@ -9,9 +9,10 @@ import NavBar from "../../Components/NavBar";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import myImage from "../../images/main_byw.jpg";
 
 function Login() {
-  const { authenticateUser , isLoggedIn } = useContext(AuthContext);
+  const { authenticateUser, isLoggedIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -55,39 +56,55 @@ function Login() {
   };
 
   return (
-      <Box
-        onSubmit={handleLogin}
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
+    <div>
+      <NavBar />
+      <div
+        className="login-background"
+        style={{
+          backgroundImage: `url(${myImage})`,
         }}
-        noValidate
-        autoComplete="off"
       >
-        <div>
-        <NavBar />
-          <TextField
-            onChange={handleEmailChange}
-            id="outlined-email-input"
-            label="Email"
-            type="email"
-            autoComplete="current-email"
-            color="limes"
-          />
-          <TextField
-            onChange={handlePasswordChange}
-            id="outlined-password-input"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            color="limes"
-          />
-          <Button type="submit" variant="contained" color="limes">
-            Login
-          </Button>
-          {errorMessage && <p>{errorMessage}</p>}
+        <div className="login-area">
+          <br />
+          <div className="login-card">
+            <Box
+              onSubmit={handleLogin}
+              component="form"
+              sx={{
+                "& .MuiTextField-root": { m: 1, width: "25ch" },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <div className="login-container">
+                <h2>Welcome<span id="white">Again</span></h2>
+                <TextField
+                  onChange={handleEmailChange}
+                  id="outlined-email-input"
+                  label="Email"
+                  type="email"
+                  autoComplete="current-email"
+                  color="limes"
+                />
+                <TextField
+                  onChange={handlePasswordChange}
+                  id="outlined-password-input"
+                  label="Password"
+                  type="password"
+                  autoComplete="current-password"
+                  color="limes"
+                />
+                <br />
+                <Button type="submit" color="limes">
+                  Login
+                </Button>
+                {errorMessage && <p>{errorMessage}</p>}
+              </div>
+            </Box>
+          </div>
         </div>
-      </Box>
+      </div>
+    </div>
   );
 }
 

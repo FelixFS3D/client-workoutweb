@@ -19,10 +19,10 @@ import { UserContext } from "../context/user.context";
 import EditModalAvatar from "./EditModalAvatar";
 
 //  si no está loggeado
-const pagesNotLogged = ["Home", "About Us"];
-const settingsNotLogged = ["Sign up", "Login"];
+const pagesNotLogged = [];
+const settingsNotLogged = ["Login", "Sign up"];
 // si está loggeado y es admin
-const pagesAdmin = ["Home", "Trainer", "User", "Workouts", "Routines"];
+const pagesAdmin = ["Trainer Area", "User", "Workouts", "Routines"];
 const settingsAdmin = ["Profile", "Logout"];
 // si está loggeado y es user
 const pagesUser = ["User", "Routines"]
@@ -54,9 +54,8 @@ function NavBar(props) {
     setAnchorElUser(null);
   };
   const handleNavigate = (page) => {
-    if (page === "Home") {
-      navigate("/");
-    } else if (page === "Trainer") {
+  
+    if (page === "Trainer Area") {
       navigate("/trainer");
     } else if (page === "Workouts") {
       navigate("/workouts");
@@ -102,7 +101,7 @@ function NavBar(props) {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -151,11 +150,6 @@ function NavBar(props) {
                 </MenuItem>
               ))}
               { isLoggedIn && !isAdmin && pagesUser.map((page) => (
-                <MenuItem key={page} onClick={() => handleNavigate(page)}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-              {!isLoggedIn && pagesNotLogged.map((page) => (
                 <MenuItem key={page} onClick={() => handleNavigate(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
@@ -249,6 +243,15 @@ function NavBar(props) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+              {isLoggedIn && <EditModalAvatar />}
+              { !isLoggedIn && settingsNotLogged.map((setting) => (
+                <MenuItem
+                  key={setting}
+                  onClick={() => handelNavigateUser(setting)}
+                >
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
               { isAdmin && settingsAdmin.map((setting) => (
                 <MenuItem
                   key={setting}
@@ -265,15 +268,6 @@ function NavBar(props) {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-              { !isLoggedIn && settingsNotLogged.map((setting) => (
-                <MenuItem
-                  key={setting}
-                  onClick={() => handelNavigateUser(setting)}
-                >
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-              <EditModalAvatar />
             </Menu>
           </Box>
         </Toolbar>

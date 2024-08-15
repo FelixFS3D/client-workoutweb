@@ -10,9 +10,9 @@ import Box from "@mui/material/Box";
 import service from "../service/service.config";
 import { useState } from "react";
 import EditWorkouts from "./EditWorkouts";
-import SaveAsOutlinedIcon from '@mui/icons-material/SaveAsOutlined';
-import SaveAltOutlinedIcon from '@mui/icons-material/SaveAltOutlined';
-import DeleteIcon from '@mui/icons-material/Delete';
+import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
+import SaveAltOutlinedIcon from "@mui/icons-material/SaveAltOutlined";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function EditModalRoutine(props) {
   const [open, setOpen] = useState(false);
@@ -78,7 +78,11 @@ function EditModalRoutine(props) {
   return (
     <div>
       <React.Fragment>
-        <Button  startIcon={<SaveAsOutlinedIcon/>} variant="outlined" onClick={handleClickOpen}>
+        <Button
+          startIcon={<SaveAsOutlinedIcon />}
+          variant="outlined"
+          onClick={handleClickOpen}
+        >
           Edit Routine
         </Button>
         <Dialog
@@ -96,7 +100,7 @@ function EditModalRoutine(props) {
             },
           }}
         >
-          <DialogTitle>Edit Routine</DialogTitle>
+          <DialogTitle sx={{ color: "#c1ff72" }}>Edit Routine</DialogTitle>
           <DialogContent>
             <Box
               sx={{
@@ -105,8 +109,8 @@ function EditModalRoutine(props) {
               noValidate
               autoComplete="off"
             >
-              <div>
-              <TextField
+              <div className="modal-container">
+                <TextField
                   id="outlined-level-input"
                   label="Name"
                   color="limes"
@@ -135,14 +139,21 @@ function EditModalRoutine(props) {
                   onChange={handleRestEdit}
                 />
 
-                <EditWorkouts updateWorkouts = {updateWorkouts}/>
+                <EditWorkouts updateWorkouts={updateWorkouts} />
               </div>
             </Box>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
-            <Button startIcon={<SaveAltOutlinedIcon />} onClick={handleClickAndSave}>Save</Button>
-            <Button startIcon={<DeleteIcon />} onClick={handleDeleteRoutine}>Delete</Button>
+            <Button
+              startIcon={<SaveAltOutlinedIcon />}
+              onClick={handleClickAndSave}
+            >
+              Save
+            </Button>
+            <Button startIcon={<DeleteIcon />} onClick={handleDeleteRoutine}>
+              Delete
+            </Button>
           </DialogActions>
         </Dialog>
       </React.Fragment>

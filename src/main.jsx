@@ -21,12 +21,10 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Pragmatica, Arial, sans-serif",
-   
-    color:`#c1ff75`
+    color: `#c1ff75`,
   },
+
   components: {
-
-
     MuiDialog: {
       styleOverrides: {
         paper: {
@@ -35,7 +33,6 @@ const theme = createTheme({
         },
       },
     },
- 
 
     MuiButton: {
       styleOverrides: {
@@ -74,7 +71,6 @@ const theme = createTheme({
         },
 
         root: {
-         
           color: `#c1ff72`,
           border: "2px solid #c1ff72",
           fontFamily: "Pragmatica",
@@ -86,12 +82,10 @@ const theme = createTheme({
         },
       },
     },
-    MuiDialogTitle:{
-
-root:{
-  color:`#c1ff75`,
-}
-
+    MuiDialogTitle: {
+      root: {
+        color: `#c1ff75`,
+      },
     },
     MuiTextField: {
       styleOverrides: {
@@ -124,7 +118,6 @@ root:{
       },
     },
   },
-  
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(

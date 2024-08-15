@@ -68,7 +68,7 @@ function User() {
     }
     return (
       <div>
-        <NavBar user={user} />
+        <NavBar user={user}/>
         <div
           className="user-background"
           style={{
@@ -77,8 +77,8 @@ function User() {
         >
           <div className="user-area">
             <div className="user-details">
-              <h1>Welcome <span>{user.name}</span></h1>
-              <Button variant="outpned" onCpck={handleNavigate}>
+              <h1>Welcome<span>{user.name}</span></h1>
+              <Button variant="outlined" onClick={handleNavigate}>
             Add New Routines
           </Button>
               <h2>My Routines</h2>

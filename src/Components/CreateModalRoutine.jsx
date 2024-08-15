@@ -98,7 +98,7 @@ function CreateModalRoutine() {
             noValidate
             autoComplete="off"
           >
-            <div>
+            <div className="modal-container">
             <TextField
                 id="outlined-name-input"
                 label="Name"
@@ -124,14 +124,7 @@ function CreateModalRoutine() {
                 color="limes"
                   onChange={handleRestCreate}
               />
-
-
-
              <SelectWorkouts updateWorkouts={updateWorkouts}/>
-
-
-
-
               {errorMessage && <p>{errorMessage}</p>}
             </div>
           </Box>
