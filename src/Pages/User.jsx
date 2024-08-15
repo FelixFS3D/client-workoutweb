@@ -36,6 +36,7 @@ function User() {
     }
   };
   const handleTraining = async () => {
+    console.log("probando botón")
     navigate("/user/training");
   };
 
@@ -87,16 +88,16 @@ function User() {
                 <div key={index} className="user-routines-card">
                   <h3>{routine.name}</h3>
                   <h4>Level:</h4>
-                  <h4>{routine.level}</h4> 
+                  <p>{routine.level}</p> 
                   <h4>Series:</h4>
-                  <h4> {routine.series} times</h4>
+                  <p> {routine.series} times</p>
                   <h4>Rest time:</h4>
-                  <h4>{routine.rest} secs/serie</h4>
+                  <p>{routine.rest} secs/serie</p>
                   <h4>Workouts:</h4>
-                  <h4>{routine.workouts.workout}</h4>
+                  <p>{routine.workouts.workout}</p>
                   {routine.workouts.map((eachWorkout, index) => {
                     return (
-                      <p key={index}>·  {eachWorkout.workout} - {eachWorkout.reps} reps
+                      <p key={index}>· {eachWorkout.workout} - {eachWorkout.reps} reps
                       </p>
                     );
                   })}
@@ -105,7 +106,7 @@ function User() {
                     <Button
                       variant="outpned"
                       startIcon={<AlarmIcon />}
-                      onCpck={handleTraining}
+                      onClick={handleTraining}
                     >
                       Let´s go!
                     </Button>
@@ -113,7 +114,7 @@ function User() {
                     <Button
                       variant="outpned"
                       startIcon={<DeleteIcon />}
-                      onCpck={() => handleDelete(routine._id)}
+                      onClick={() => handleDelete(routine._id)}
                     >
                       Delete
                     </Button>

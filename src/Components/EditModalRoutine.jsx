@@ -11,6 +11,9 @@ import service from "../service/service.config";
 import { useState } from "react";
 import EditWorkouts from "./EditWorkouts";
 import SaveAsOutlinedIcon from '@mui/icons-material/SaveAsOutlined';
+import SaveAltOutlinedIcon from '@mui/icons-material/SaveAltOutlined';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 function EditModalRoutine(props) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState(props.eachRoutine.name);
@@ -138,8 +141,8 @@ function EditModalRoutine(props) {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleClickAndSave}>Save</Button>
-            <Button onClick={handleDeleteRoutine}>Delete</Button>
+            <Button startIcon={<SaveAltOutlinedIcon />} onClick={handleClickAndSave}>Save</Button>
+            <Button startIcon={<DeleteIcon />} onClick={handleDeleteRoutine}>Delete</Button>
           </DialogActions>
         </Dialog>
       </React.Fragment>

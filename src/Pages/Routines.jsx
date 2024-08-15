@@ -68,11 +68,11 @@ function Routines() {
           <div key={index} className="routine-card">
             <h3>{eachRoutine.name}</h3>
             <h4>Level:</h4>
-            <h4>{eachRoutine.level}</h4>
+            <p>{eachRoutine.level}</p>
             <h4>Series:</h4>
-            <h4> {eachRoutine.series}</h4>
+            <p> {eachRoutine.series}</p>
             <h4>Rest:</h4> 
-            <h4>{eachRoutine.rest}</h4>
+            <p>{eachRoutine.rest}</p>
             <h4>Workouts:</h4>
             {eachRoutine.workouts.map((eachWorkout, index) => {
               return(
