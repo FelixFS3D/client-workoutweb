@@ -74,6 +74,7 @@ const theme = createTheme({
         },
 
         root: {
+         
           color: `#c1ff72`,
           border: "2px solid #c1ff72",
           fontFamily: "Pragmatica",

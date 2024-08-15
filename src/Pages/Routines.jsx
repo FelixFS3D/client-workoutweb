@@ -68,7 +68,7 @@ function Routines() {
           <div key={index} className="routine-card">
             <h3>{eachRoutine.name}</h3>
             <h4>Level:</h4>
-            <h5>{eachRoutine.level}</h5>
+            <h4>{eachRoutine.level}</h4>
             <h4>Series:</h4>
             <h4> {eachRoutine.series}</h4>
             <h4>Rest:</h4> 
@@ -76,12 +76,16 @@ function Routines() {
             <h4>Workouts:</h4>
             {eachRoutine.workouts.map((eachWorkout, index) => {
               return(
-                <li key={index}>{eachWorkout.workout} - {eachWorkout.reps} reps</li>
+                <p key={index}>· {eachWorkout.workout} - {eachWorkout.reps} reps</p>
               )
             })}
             <br />
+            <div className="buttons-card-routine">
             {isAdmin && <EditModalRoutine eachRoutine={eachRoutine} getRoutines={getRoutines} />}
+         <p></p>
             <AddRoutine routineId = {eachRoutine._id}/>
+            </div>
+           
           </div>
         );
       })}
