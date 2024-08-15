@@ -7,6 +7,8 @@ import AddRoutine from "../Components/AddRoutine"
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
 import { AuthContext } from "../context/auth.context";
+import myImage from "../images/main_byw.jpg";
+import Pagination from '@mui/material/Pagination';
 
 function Routines() {
   const { isLoggedIn , isAdmin } = useContext(AuthContext)
@@ -47,16 +49,30 @@ function Routines() {
   return (
     <div>
       <NavBar />
-      <h1>Routines</h1>
+      <div className="routines-background"
+        style={{
+          backgroundImage: `url(${myImage})`,
+        }}
+        >
+        <div className="routines-area">
+          <div>
+          <h1>Routines</h1>
+          </div>
+        
+
       <br />
+      <div className="all-routines-card">
       {routines.map((eachRoutine, index) => {
         console.log(eachRoutine);
         return (
-          <div key={index} className="routines-container">
-            <h4>Routine: {eachRoutine.name}</h4>
-            <h4>Level: {eachRoutine.level}</h4>
-            <h4>Series: {eachRoutine.series}</h4>
-            <h4>Rest: {eachRoutine.rest}</h4>
+          <div key={index} className="routine-card">
+            <h3>{eachRoutine.name}</h3>
+            <h4>Level:</h4>
+            <h5>{eachRoutine.level}</h5>
+            <h4>Series:</h4>
+            <h4> {eachRoutine.series}</h4>
+            <h4>Rest:</h4> 
+            <h4>{eachRoutine.rest}</h4>
             <h4>Workouts:</h4>
             {eachRoutine.workouts.map((eachWorkout, index) => {
               return(
@@ -69,7 +85,14 @@ function Routines() {
           </div>
         );
       })}
+
+</div>
+
     </div>
+    </div>
+   
+    </div>
+    
   );
 }
 

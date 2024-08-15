@@ -275,19 +275,18 @@
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
- 
 }
 .card-trainer-area h1 {
   color: white;
   margin: 0;
   text-align: center;
-  
+
   font-size: 48px;
 }
 .card-trainer-area h3 {
   margin: 0;
   text-align: center;
-  
+
   font-size: 38px;
 }
 .card-trainer-area h4,
@@ -295,14 +294,58 @@ li,
 p {
   font-family: "Pragmatica", sans-serif;
   font-size: 18px;
- 
 }
 .card-trainer-area h3 #green {
   color: #c1ff72;
-  
 }
 .card-trainer-area h3 #white {
   color: white;
+}
+
+/* Routines */
+.routines-background{
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.routines-area {
+  background-color: #060d0c;
+  margin-top: 0px;
+  margin-left: 12vw;
+  margin-right: 12vw;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.all-routines-card{
+position: absolute;
+transform: translateY(50px);
+height:1000px;
+width: 72vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+.routine-card {
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+  border: 2px solid;
+  border-radius: 10px;
+  border-color: #c1ff72;
+  width: 300px;
+  height: 420px;
+  margin:8px
   
 }
 
