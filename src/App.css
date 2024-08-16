@@ -478,3 +478,122 @@ p {
   align-items: center;
   transform: translateY(0px);
 }
+
+
+
+/* MÓVILES */
+@media only screen and (max-width: 600px) {
+ 
+  .main-background {
+    background-position: top center;
+    background-size: cover;
+    height: 80vh;
+  }
+  .main-background h1 {
+    font-size: 54px; 
+    width: 90vw; 
+    transform: translate(25px,300px); 
+    text-align: center; 
+  }
+  .main-background .signup, 
+  .our-workout-routines-container .signup, 
+  .signup-call .signup {
+    transform: translate(0, 550px);
+    margin: 0 auto;
+    height: 48px; 
+    width: 128px; 
+    display: block;
+  }
+  
+  
+  .opinions-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    height: 85vh;
+   
+  }
+  #op1, #op2, #op3, #op4 {
+    width: 45%; 
+    height: 280px;
+    margin: 10px 0;
+    transform: translateY(60px);
+  }
+  .opinions-container p {
+    width: 180px;
+    height: 280px;
+    text-align: center;
+    margin-top:50px;
+    margin-left: 20px;
+    font-size: 12px;
+    transform: translateX(-18px);
+  }
+  #avatar1,
+  #avatar2,
+  #avatar3,
+  #avatar4 {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    border-radius: 40px;
+    transform: translate(58px, -40px);
+  }
+
+  .our-workout-routines-container{
+    transform: translateY(-50px);
+    height: 100vh;
+
+  }
+  .our-workout-routines-container h1 {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    transform: translate(0, 20px); 
+  }
+  .texts {
+    position: static; 
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 20px;
+  }
+  .texts p {
+    font-size: 16px; 
+    margin: 10px 0;
+  }
+  .texts h2 {
+    font-size: 32px; 
+    text-align: center;
+  }
+
+  
+  .our-workout-routines-container .signup {
+    transform: translate(0, 840px);
+    margin: 50px auto;
+    display: block;
+  }
+
+  
+  #container-sports-signup {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50vh;
+  }
+  #container-sports-signup div {
+    width: 45vw
+  }
+  .signup-call {
+    height: 100vh;
+    transform: translateY(-50px);
+  }
+  
+  .signup-call .signup {
+    transform: translate(-95px, 780px);
+    margin: 50px auto; 
+    display: block;
+  }
+  .footer-site {
+    height: 30vh;
+    transform: translateY(-50px);
+  }
+}
+
