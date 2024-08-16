@@ -26,6 +26,7 @@ function UserWrapper(props) {
     const passedContext = {
         imgUser,
         setImgUser,
+        getUserData
     }
 
   return (

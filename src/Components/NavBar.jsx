@@ -32,7 +32,7 @@ function NavBar(props) {
   console.log(props)
   const { isLoggedIn , isAdmin , authenticateUser } = useContext(AuthContext)
 
-  const { imgUser, setImgUser} = useContext(UserContext)
+  const { imgUser, setImgUser, getUserData } = useContext(UserContext)
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -75,7 +75,6 @@ function NavBar(props) {
     } else if (setting === "Login") {
       navigate("/login");
     } else if (setting === "Logout") {
-      // invocar función que hace logout
       handleLogout();
     }
   };
