@@ -223,7 +223,7 @@ function NavBar(props) {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt=""
-                  src={isLoggedIn ? imgUser : ""} //si está loggeado, si está definido el usuario, accede a props.user.imgUser
+                  src={isLoggedIn ? imgUser : ""}
                 />
               </IconButton>
             </Tooltip>

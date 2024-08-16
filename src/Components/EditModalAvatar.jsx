@@ -5,16 +5,20 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
-
 import Box from "@mui/material/Box";
 import service from "../service/service.config";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 import { useState } from "react";
 
 
 function EditModalAvatar(props) {
+
+  const { getUserData } = useContext(AuthContext)
+
   const [open, setOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -63,10 +67,27 @@ function EditModalAvatar(props) {
       }
     }
   };
+
+  const handleGetImage = async () => {
+    try {
+      await service.get("/users");
+    } catch (error) {
+      console.log(error);
+      if (error.response && error.response.status === 400) {
+        setErrorMessage(error.response.data.errorMessage);
+      } else {
+        navigate("/error");
+      }
+    }
+  };
+
+
+
   const handleClickAndSave = async (event) => {
     event.preventDefault();
     await handleCreate(event); // la función necesita saber qué datos se ingresan en el formulario
     // props.getUserDetails()
+    handleGetImage()
     handleClose();
   };
 
