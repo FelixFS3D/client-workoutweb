@@ -484,15 +484,18 @@ p {
 /* MÓVILES */
 @media only screen and (max-width: 600px) {
  
+  #root {
+    width: 100vh;
+  }
   .main-background {
     background-position: top center;
     background-size: cover;
     height: 80vh;
   }
   .main-background h1 {
-    font-size: 54px; 
+    font-size: 55px; 
     width: 90vw; 
-    transform: translate(25px,300px); 
+    transform: translate(15px,300px); 
     text-align: center; 
   }
   .main-background .signup, 
