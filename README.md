@@ -28,28 +28,29 @@ Finalmente el usuario registrado recibe la posibilidad de añadir cualquiera de 
 - **/user** - Usuario. Perfil de usuario con el que accedemos a los datos de cada usuario registrado. Aquí podemos ver nuestras rutinas añadidas, ver todas las rutinas creadas por el coach, así como editar nuestro perfil.
 - **/routines** - Aquí podemos ver todas las rutinas creadas por el coach, y que dispone el usuario registrado.
 - **/workouts** - Aquí podemos ver todos los workouts creados por el coach con los que podrá hacer las rutinas.
-- **error** - Página de error,
-- **/*/** - As a user I want to create an event so that I can invite others to attend
+- **/user/training** - Aquí podemos comemnzar a entrenar con un crono.
+- **error** - Página de error.
+- **/*/** - Página de not found.
 
 ## Client Routes
 
 **NOTE -** Use below table to list your frontend routes
 
 ## React Router Routes (React App)
-| Path                      | Page            | Components        | Permissions              | Behavior                                                      */|
+| Path                      | Page            | Components        | Permissions              | Behavior                                                    */|
 | ------------------------- | ----------------| ----------------  | ------------------------ | ------------------------------------------------------------  |
 | `/`                       | Home            |                   | public                   | Home page                                                     |
-| `/signup`                 | Signup          |                   | anon only `<IsAnon>`     | Signup form, link to login, navigate to homepage after signup |
-| `/login`                  | Login           |                   | anon only `<IsAnon>`     | Login form, link to signup, navigate to homepage after login  |
-| `/profile`                | Profile         | EditProfile       | user only `<IsPrivate>`  | Navigate to homepage after logout, expire session             |
-| `/games/list`             | GameList        | AddGame, GameCard | user only `<IsPrivate>`  | Shows all films on backlog                                    |
-| `/games/edit`             | GamesEdit       |                   | user only `<IsPrivate>`  | Shows all games on backlog                                    |
-| `/games/favourites`       | FavouriteList   | GameCard          | user only `<IsPrivate>`  | Shows all games on backlog                                    |
+| `/signup`                 | Signup          |                   | anon only                | Signup                                                        |
+| `/login`                  | Login           |                   | anon only                | Login                                                         |
+| `/user`                   | User            | User              | user&admin `<Private>`   | User page                                                     |
+| `/trainer`                | Trainer         | Trainer           | admin only `<Private>`   | Trainer mode                                                  |
+| `/routines`               | Routines        | Routines          | user&admin `<Private>`   | Routines page                                                 |
+| `/workouts`               | Workouts        | Workouts          | admin only `<Private>`   | Workouts page                                                 |
+| `/user/training`          | Training Mode   | Training          | user&admin `<Private>`   | Training mode                                                 |
 
 ## Other Components
 
 - Navbar
-- Footer
 
 ## Services
 
@@ -59,41 +60,45 @@ Finalmente el usuario registrado recibe la posibilidad de añadir cualquiera de 
   - auth.verify()
 
 - Backlog Service
-  - game.filter(type, status)
-  - game.detail(id)
-  - game.add(id)
-  - game.delete(id)
-  - game.update(id)
+  - workouts.details(id)
+  - workouts.add(id)
+  - workouts.update(id)
+  - workouts.delete(id)
+
+  - routines.details(id)
+  - routines.add(id)
+  - routines.update(id)
+  - routines.delete(id)
+
+  - user.add(id)
+  - user.update(id)
   
-- External API
-  - gameApi.details
-  - gameApi.list
   
 ## Context
 
 - auth.context
-- theme.context
+- user.context
   
 ## Links
 
 ### Collaborators
 
-[Developer 1 name](www.github-url.com)
+[Félix](https://github.com/FelixFS3D)
 
-[Developer 2 name](www.github-url.com)
+[Iñigo](https://github.com/inigoestebangomez)
 
 ### Project
 
-[Repository Link Client](www.your-github-url-here.com)
+[Repository Link Client](https://github.com/FelixFS3D/client-workoutweb)
 
-[Repository Link Server](www.your-github-url-here.com)
+[Repository Link Server](https://github.com/FelixFS3D/server-workoutweb)
 
-[Deploy Link](www.your-deploy-url-here.com)
+[Deploy Link](https://workouts-web.netlify.app)
 
-### Trello
+### Excalidraw
 
-[Link to your trello board](www.your-trello-url-here.com)
+[Link to your Excalidraw board](https://excalidraw.com/#json=6WDynWOc1NO4FPiOrs5VM,RxU0Gg6FjFJbFfXA94u3AQ)
 
 ### Slides
 
-[Slides Link](www.your-slides-url-here.com)
+[Slides Link](https://www.canva.com/design/DAGOArjprrc/Vnvefijgk1MHd5y2YZSdrg/view?utm_content=DAGOArjprrc&utm_campaign=designshare&utm_medium=link&utm_source=editor)

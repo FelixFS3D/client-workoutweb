@@ -65,7 +65,7 @@ function AddMuscle(props) {
         <InputLabel
           id="demo-multiple-chip-label"
           sx={{
-            color: "#c1ff72", // Color de la letra del label
+            color: "#c1ff72", 
           }}
         >
           Muscle
@@ -82,18 +82,18 @@ function AddMuscle(props) {
               label="Chip"
               sx={{
                 "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#c1ff72", // Color de borde verde
+                  borderColor: "#c1ff72", 
                 },
                 "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#95cb4e", // Color de borde verde al pasar el mouse
+                  borderColor: "#95cb4e", 
                 },
                 "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#c1ff72", // Color de borde verde al enfocarse
+                  borderColor: "#c1ff72",
                 },
                 "& .MuiSvgIcon-root": {
-                  color: "#95cb4e", // Color de la flecha
+                  color: "#95cb4e", 
                 },
-                color: "#95cb4e", // Color del texto
+                color: "#95cb4e", 
               }}
             />
           }
@@ -103,16 +103,16 @@ function AddMuscle(props) {
                 display: "flex",
                 flexWrap: "wrap",
                 gap: 0.5,
-                color: "#c1ff72", // Letra del chip verde
+                color: "#c1ff72", 
                 "&.Mui-selected": {
-                  color: "#c1ff72", // Texto en verde cuando está seleccionado
+                  color: "#c1ff72", 
                 },
               }}
             >
               {selected.map((value) => (
                 <Chip key={value} label={value} sx={{
-                  backgroundColor: "#222", // Chip gris oscuro
-                  color: "#c1ff72", // Letra del chip verde
+                  backgroundColor: "#222", 
+                  color: "#c1ff72", 
                 }} />
               ))}
             </Box>
@@ -126,11 +126,11 @@ function AddMuscle(props) {
               style={getStyles(name, personName, theme)}
               sx={{
                 "&.Mui-selected": {
-                  backgroundColor: "333", // Fondo gris oscuro al seleccionarse
-                  color: "#4caf50", // Texto en verde cuando está seleccionado
+                  backgroundColor: "333", 
+                  color: "#4caf50", 
                 },
                 "&:hover": {
-                  backgroundColor: "#444", // Fondo gris claro al pasar el mouse sobre un elemento
+                  backgroundColor: "#444",
                 },
               }}
             >

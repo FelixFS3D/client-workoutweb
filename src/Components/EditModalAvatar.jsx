@@ -38,15 +38,15 @@ function EditModalAvatar(props) {
       // to prevent accidentally clicking the choose file button and not selecting a file
       return;
     }
-    setIsUploading(true); // to start the loading animation
-    const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
+    setIsUploading(true); 
+    const uploadData = new FormData(); 
     uploadData.append("image", event.target.files[0]);
     try {
       const response = await service.post("/upload", uploadData);
 
       setImageUrl(response.data.imageUrl);
 
-      setIsUploading(false); // to stop the loading animation
+      setIsUploading(false); 
     } catch (error) {
       navigate("/error");
     }
@@ -70,7 +70,7 @@ function EditModalAvatar(props) {
 
   const handleClickAndSave = async (event) => {
     event.preventDefault();
-    await handleCreate(event); // la función necesita saber qué datos se ingresan en el formulario
+    await handleCreate(event); 
     getUserData();
     handleClose();
   };

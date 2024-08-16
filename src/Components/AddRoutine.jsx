@@ -21,8 +21,7 @@ const navigate = useNavigate();
       await service.patch(`/users/routine-add`, addRoutine);
       navigate("/routines");
     } catch (error) {
-      console.log(error);
-    //   navigate("/error");
+      navigate("/error");
     }
   };
 

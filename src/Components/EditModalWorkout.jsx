@@ -17,7 +17,6 @@ import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 function EditModalWorkout(props) {
   const [open, setOpen] = useState(false);
-  // cloudinary
   const [imageUrl, setImageUrl] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -36,7 +35,7 @@ function EditModalWorkout(props) {
   };
 
   const handleFileUpload = async (event) => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
+  
 
     if (!event.target.files[0]) {
       // to prevent accidentally clicking the choose file button and not selecting a file

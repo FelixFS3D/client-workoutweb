@@ -1,9 +1,16 @@
 import React from 'react'
+import NavBar from '../Components/NavBar'
+import fotoNotFound from "../../src/images/Gimnasio vacio.jpg"
 
 function NotFound() {
   return (
     <div>
-      <h1>Not Found!</h1>
+      <div className='pic-error' style={{
+          backgroundImage: `url(${fotoNotFound})`}}>
+      <NavBar />
+      <h1>Not<span id='green'>Found</span></h1>
+      <h2>Opps! Seems you are in a wrong place! Go back home.</h2>
+      </div>
     </div>
   )
 }

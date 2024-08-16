@@ -64,14 +64,14 @@ function SelectWorkouts(props) {
     setPersonName(value);
 
     const workoutIds = value.map((workout) => workout._id)
-    props.updateWorkouts(workoutIds)  // el update pasarle el value 
+    props.updateWorkouts(workoutIds)  
   };  
 
   return (
     <div>
       <FormControl sx={{ m: 1, width: 200 }}>
         <InputLabel id="demo-multiple-chip-label" sx={{
-            color: "#c1ff72", // Color de la letra del label
+            color: "#c1ff72",
           }}>Workouts</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
@@ -81,23 +81,23 @@ function SelectWorkouts(props) {
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-chip" label="Chip" sx={{
             "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#c1ff72", // Color de borde verde
+              borderColor: "#c1ff72", 
             },
             "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#95cb4e", // Color de borde verde al pasar el mouse
+              borderColor: "#95cb4e", 
             },
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#c1ff72", // Color de borde verde al enfocarse
+              borderColor: "#c1ff72", 
             },
             "& .MuiSvgIcon-root": {
-              color: "#95cb4e", // Color de la flecha
+              color: "#95cb4e", 
             },
-            color: "#95cb4e", // Color del texto
+            color: "#95cb4e", 
           }}/>}
           renderValue={(selected) => (
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, color: "#c1ff72", // Letra del chip verde
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, color: "#c1ff72", 
               "&.Mui-selected": {
-                color: "#c1ff72", // Texto en verde cuando está seleccionado
+                color: "#c1ff72", 
               }, }}>
               {selected.map((value) => (
                 <Chip key={value._id} label={value.workout} sx={{
@@ -116,11 +116,11 @@ function SelectWorkouts(props) {
               style={getStyles(name.workout, personName, theme)}
               sx={{
                 "&.Mui-selected": {
-                  backgroundColor: "333", // Fondo gris oscuro al seleccionarse
-                  color: "#4caf50", // Texto en verde cuando está seleccionado
+                  backgroundColor: "333", 
+                  color: "#4caf50", 
                 },
                 "&:hover": {
-                  backgroundColor: "#444", // Fondo gris claro al pasar el mouse sobre un elemento
+                  backgroundColor: "#444", 
                 },
               }}
             >
