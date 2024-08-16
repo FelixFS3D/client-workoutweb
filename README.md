@@ -4,40 +4,39 @@
 
 ## Description
 
-**NOTE -** **WorkoutWeb** es una app que permite entrenar desde cualquier dispositivo, mediante el uso de rutinas de difetentes disciplinas del fitness. Por una parte, el coach "trainer" tiene la posibilidad de crear ejercicios únicos "Workouts". Con estos "Workouts"
-el usuario registrado recibe la posibilidad de añadir rutinas con las 
+**-** **WorkoutWeb** es una app que permite entrenar desde cualquier dispositivo, mediante el uso de rutinas de difetentes disciplinas del fitness. Por una parte, el coach "trainer" tiene la posibilidad de crear ejercicios únicos "Workouts". Con estos "Workouts" el coach podrá crear rutinas de trabajo, que se compondrán de todos los "Workouts" que estime oportuno.
+Finalmente el usuario registrado recibe la posibilidad de añadir cualquiera de estas rutinas a su perfil de usuario, y entrenar con ellas con la función Trainer Mode.
 #### [Client Repo here](https://github.com/FelixFS3D/client-workoutweb)
 #### [Server Repo here](https://github.com/FelixFS3D/server-workoutweb)
 
 ## Technologies & Libraries used
 
-**NOTE -** List here all technologies used in the project like HTML, CSS, Javascript, React, axios, React Context, etc.
+**-** HTML, CSS, Javascript, React, axios, React Context, Material UI, Base UI, Cloudinary.
 
 ## Backlog Functionalities
 
-**NOTE -** List here all functionalities you wish to add to your proyect later or you are currently working on
+**-** Registro de marcas en la función de usuario mediante gráficos, una vez se haya entrenado cada rutina.
 
 # Client Structure
 
 ## User Stories
 
-**NOTE -**  List here all the actions a user can do in the app. Example:
-
-- **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
-- **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-- **homepage** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
-- **sign up** - As a user I want to sign up on the webpage so that I can see all the events that I could attend
-- **login** - As a user I want to be able to log in on the webpage so that I can get back to my account
-- **logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-- **events list** - As a user I want to see all the events available so that I can choose which ones I want to attend
-- **events create** - As a user I want to create an event so that I can invite others to attend
+- **/** - Home. Página principal y llamada a la acción del registro o login si ya estás registrado. 
+- **/signup** - SignUp. La página de registro para acceder a la web.
+- **/login** - LogIn. La página de acceso a la web.
+- **logout** - Funcionalidad de LogOut para salir de nuestra sesión de usuario.
+- **/user** - Usuario. Perfil de usuario con el que accedemos a los datos de cada usuario registrado. Aquí podemos ver nuestras rutinas añadidas, ver todas las rutinas creadas por el coach, así como editar nuestro perfil.
+- **/routines** - Aquí podemos ver todas las rutinas creadas por el coach, y que dispone el usuario registrado.
+- **/workouts** - Aquí podemos ver todos los workouts creados por el coach con los que podrá hacer las rutinas.
+- **error** - Página de error,
+- **/*/** - As a user I want to create an event so that I can invite others to attend
 
 ## Client Routes
 
 **NOTE -** Use below table to list your frontend routes
 
 ## React Router Routes (React App)
-| Path                      | Page            | Components        | Permissions              | Behavior                                                      |
+| Path                      | Page            | Components        | Permissions              | Behavior                                                      */|
 | ------------------------- | ----------------| ----------------  | ------------------------ | ------------------------------------------------------------  |
 | `/`                       | Home            |                   | public                   | Home page                                                     |
 | `/signup`                 | Signup          |                   | anon only `<IsAnon>`     | Signup form, link to login, navigate to homepage after signup |

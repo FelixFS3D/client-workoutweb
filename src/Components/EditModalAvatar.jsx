@@ -71,7 +71,6 @@ function EditModalAvatar(props) {
   const handleClickAndSave = async (event) => {
     event.preventDefault();
     await handleCreate(event); // la función necesita saber qué datos se ingresan en el formulario
-    // props.getUserDetails()
     getUserData();
     handleClose();
   };

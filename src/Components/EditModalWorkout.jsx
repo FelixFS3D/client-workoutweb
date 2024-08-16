@@ -13,9 +13,13 @@ import EditMuscle from "./EditMuscle";
 import DeleteIcon from '@mui/icons-material/Delete';
 import SaveAltOutlinedIcon from '@mui/icons-material/SaveAltOutlined';
 import SaveAsOutlinedIcon from '@mui/icons-material/SaveAsOutlined';
+import Stack from "@mui/material/Stack";
+import CircularProgress from "@mui/material/CircularProgress";
 function EditModalWorkout(props) {
   const [open, setOpen] = useState(false);
-
+  // cloudinary
+  const [imageUrl, setImageUrl] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [workout, setWorkout] = useState(props.eachWorkout.workout);
   const [muscle, setMuscle] = useState(props.eachWorkout.muscle);
@@ -31,6 +35,28 @@ function EditModalWorkout(props) {
     setOpen(false);
   };
 
+  const handleFileUpload = async (event) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    if (!event.target.files[0]) {
+      // to prevent accidentally clicking the choose file button and not selecting a file
+      return;
+    }
+    setIsUploading(true); // to start the loading animation
+    const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
+    uploadData.append("image", event.target.files[0]);
+
+    try {
+      const response = await service.post("/upload", uploadData);
+
+      setImageUrl(response.data.imageUrl);
+
+      setIsUploading(false); // to stop the loading animation
+    } catch (error) {
+      navigate("/error");
+    }
+  };
+
   const handleEditWorkout = async (event) => {
     event.preventDefault();
     const updateWorkout = {
@@ -38,6 +64,7 @@ function EditModalWorkout(props) {
       muscle,
       reps,
       videoDemo,
+      imgWork: imageUrl,
     };
     try {
       await service.put(`/workouts/${props.eachWorkout._id}`, updateWorkout);
@@ -132,6 +159,28 @@ function EditModalWorkout(props) {
                 value={videoDemo}
                 onChange={handleVideoDemoEdit}
               />
+              <TextField
+                id="outlined-imgWork-input"
+                type="file"
+                name="imgWork"
+                onChange={handleFileUpload}
+                disabled={isUploading}
+                color="limes"
+              />
+              {/* Mostrar mensaje de carga */}
+              {isUploading ? (
+                <Stack sx={{ color: "grey.500" }} spacing={2} direction="row">
+                  <CircularProgress color="success" />
+                </Stack>
+              ) : null}
+
+              {/* Mostrar vista previa de la imagen */}
+              {imageUrl ? (
+                <div>
+                  <img src={imageUrl} alt="img" width={200} />
+                </div>
+              ) : null}
+              {errorMessage && <p>{errorMessage}</p>}
             </div>
           </Box>
         </DialogContent>
